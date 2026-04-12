@@ -1,32 +1,34 @@
-import { GoogleGenAI, Type } from "@google/genai";
 import { Service, KBDocument, AppConfig, AIResponse } from "../types";
 
-async function callDeepSeek(
+async function callOpenAIApi(
+  endpoint: string,
+  model: string,
   userMessage: string,
   history: { role: 'user' | 'assistant', content: string }[],
   systemInstruction: string,
   apiKey: string
 ): Promise<AIResponse> {
-  const response = await fetch("https://api.deepseek.com/chat/completions", {
+  const response = await fetch(endpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: "deepseek-chat",
+      model: model,
       messages: [
         { role: "system", content: systemInstruction + "\n\nYou MUST output ONLY valid JSON matching the specified schema." },
         ...history.map(h => ({ role: h.role, content: h.content })),
         { role: "user", content: userMessage }
       ],
       response_format: { type: "json_object" },
-      temperature: 1.0
+      temperature: 0.7
     })
   });
 
   if (!response.ok) {
-    throw new Error(`DeepSeek API error: ${response.statusText}`);
+    const errText = await response.text();
+    throw new Error(`API error (${response.status}): ${errText}`);
   }
 
   const data = await response.json();
@@ -83,58 +85,37 @@ You MUST output valid JSON matching this schema:
 }
 `;
 
-  // Attempt Carrier A: Gemini
+  // Attempt Carrier A: Groq LPU (Llama 3.3 70B)
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
-      contents: [
-        ...history.map(h => ({ role: h.role === 'assistant' ? 'model' : 'user', parts: [{ text: h.content }] })),
-        { role: 'user', parts: [{ text: userMessage }] }
-      ],
-      config: {
-        systemInstruction,
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            response_text: { type: Type.STRING },
-            ui_action: { 
-              type: Type.STRING, 
-              enum: ["show_catalog", "show_booking", "human_handoff", "none"] 
-            },
-            lead_extraction: {
-              type: Type.OBJECT,
-              properties: {
-                is_new_lead: { type: Type.BOOLEAN },
-                name: { type: Type.STRING, nullable: true },
-                phone_or_email: { type: Type.STRING, nullable: true },
-                service_interest: { type: Type.STRING, nullable: true }
-              },
-              required: ["is_new_lead", "name", "phone_or_email", "service_interest"]
-            }
-          },
-          required: ["response_text", "ui_action", "lead_extraction"]
-        }
-      }
-    });
-
-    const result = JSON.parse(response.text || "{}");
-    return result as AIResponse;
-  } catch (geminiError) {
-    console.error("Carrier A (Gemini) Failed. Initiating Carrier B (DeepSeek) Failover...", geminiError);
+    if (!process.env.GROQ_API_KEY) throw new Error("GROQ_API_KEY missing");
+    
+    return await callOpenAIApi(
+      "https://api.groq.com/openai/v1/chat/completions",
+      "llama-3.3-70b-versatile",
+      userMessage,
+      history,
+      systemInstruction,
+      process.env.GROQ_API_KEY
+    );
+  } catch (groqError: any) {
+    console.error("Carrier A (Groq) Failed. Reason:", groqError?.message, groqError);
     
     // Attempt Carrier B: DeepSeek
     try {
-      if (process.env.DEEPSEEK_API_KEY) {
-        return await callDeepSeek(userMessage, history, systemInstruction, process.env.DEEPSEEK_API_KEY);
-      } else {
-        throw new Error("DeepSeek API Key missing for failover.");
-      }
-    } catch (deepSeekError) {
-      console.error("Carrier B (DeepSeek) Failed.", deepSeekError);
+      if (!process.env.DEEPSEEK_API_KEY) throw new Error("DEEPSEEK_API_KEY missing");
+      
+      return await callOpenAIApi(
+        "https://api.deepseek.com/chat/completions",
+        "deepseek-chat",
+        userMessage,
+        history,
+        systemInstruction,
+        process.env.DEEPSEEK_API_KEY
+      );
+    } catch (deepSeekError: any) {
+      console.error("Carrier B (DeepSeek) Failed. Reason:", deepSeekError?.message, deepSeekError);
       return {
-        response_text: "I'm sorry, I'm having a bit of trouble connecting. Could you try again in a moment?",
+        response_text: "I'm sorry, I'm having a bit of trouble connecting to my network. Let's try again in a moment.",
         ui_action: "none",
         lead_extraction: { is_new_lead: false, name: null, phone_or_email: null, service_interest: null }
       };
