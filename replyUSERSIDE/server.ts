@@ -3,6 +3,7 @@ import { createServer as createViteServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
+import cors from "cors";
 import { createClient } from "@supabase/supabase-js";
 import { generateSalesResponse } from "./src/lib/ai-core.js";
 
@@ -15,6 +16,7 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  app.use(cors());
   app.use(express.json());
 
   // API Routes
