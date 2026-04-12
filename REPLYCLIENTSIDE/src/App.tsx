@@ -107,7 +107,7 @@ export default function App() {
         id: Date.now().toString(),
         name: 'Anonymous Caller',
         phone: 'Pending',
-        service_interest: 'Chat Initiated',
+        serviceInterest: 'Chat Initiated',
         status: 'Cold',
         source: 'front-door',
         client_id: resolvedClient
@@ -143,7 +143,7 @@ export default function App() {
         id: Date.now().toString(),
         name: 'Anonymous Caller',
         phone: phoneMatch[0],
-        service_interest: 'Pre-Chat Request',
+        serviceInterest: 'Pre-Chat Request',
         status: 'Warm',
         source: 'chat',
         client_id: resolvedClient
@@ -207,7 +207,7 @@ export default function App() {
         id: Date.now().toString(),
         name: data.name,
         phone: data.phone,
-        service_interest: data.need || 'General Consultation',
+        serviceInterest: data.need || 'General Consultation',
         status: 'Hot',
         source: 'booking_form',
         client_id: resolvedClient
