@@ -6,7 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare, Send, X, Phone, Calendar, Bot, User, Sparkles } from "lucide-react";
 import { Service, AppConfig, ChatMessage } from "@/src/types";
-import { generateSalesResponse } from "@/src/lib/gemini";
+import { generateSalesResponse } from "@/src/lib/ai-core";
 import { motion, AnimatePresence } from "motion/react";
 import { supabase } from "@/src/lib/supabase";
 

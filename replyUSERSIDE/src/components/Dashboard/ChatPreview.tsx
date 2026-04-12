@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Send, RefreshCcw, User, Bot, Sparkles } from "lucide-react";
 import { Service, KBDocument, AppConfig, ChatMessage, AIResponse } from "@/src/types";
-import { generateSalesResponse } from "@/src/lib/gemini";
+
 
 interface ChatPreviewProps {
   services: Service[];
@@ -44,7 +44,23 @@ export function ChatPreview({ services, kb, config }: ChatPreviewProps) {
     setLoading(true);
 
     const history = messages.map(m => ({ role: m.role, content: m.content }));
-    const response = await generateSalesResponse(input, history, services, kb, config);
+    let response;
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_id: config.clientId,
+          message: input,
+          history,
+          config
+        })
+      });
+      response = await res.json();
+    } catch(e) {
+      console.error(e);
+      response = { response_text: "System communication error.", ui_action: "none" };
+    }
 
     const aiMsg: ChatMessage = {
       id: (Date.now() + 1).toString(),
