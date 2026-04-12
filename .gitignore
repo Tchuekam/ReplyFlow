@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+# Subdirectories
+REPLYCLIENTSIDE/node_modules/
+REPLYCLIENTSIDE/dist/
+REPLYCLIENTSIDE/.env
+replyUSERSIDE/node_modules/
+replyUSERSIDE/dist/
+replyUSERSIDE/.env
