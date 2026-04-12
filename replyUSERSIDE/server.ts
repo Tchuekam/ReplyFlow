@@ -4,7 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
 import { createClient } from "@supabase/supabase-js";
-import { generateSalesResponse } from "./src/lib/gemini.js";
+import { generateSalesResponse } from "./src/lib/ai-core.js";
 
 dotenv.config();
 

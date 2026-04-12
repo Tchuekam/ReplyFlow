@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, Layers, Phone, Calendar, ShoppingBag, Printer, Package, Shirt, Video, GraduationCap, User } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { MessageBubble } from './components/MessageBubble';
 import { ProductCatalog } from './components/ProductCatalog';
 import { BookingForm } from './components/BookingForm';
@@ -153,28 +152,35 @@ export default function App() {
 
     try {
       const chatHistory = messages.map(m => ({
-        role: m.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: m.content }]
+        role: m.role,
+        content: m.content
       }));
 
-      const ai = new GoogleGenAI({ apiKey: (import.meta as any).env?.VITE_GEMINI_API_KEY || "AIzaSyBL5o9-y3JtvmXo-_FwANOkDTeAOaTGB4E" });
-
-      const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash",
-        contents: [...chatHistory, { role: 'user', parts: [{ text }, ...pdfContextParts] }],
-        config: {
-          systemInstruction: contextData,
-          temperature: 0.7,
-        }
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_id: resolvedClient,
+          message: text,
+          history: chatHistory,
+          config: { businessName, tagline: 'Bold design. Real results.' } // Basic config as fallback
+        })
       });
 
-      const aiText = response.text || "I'm sorry, I couldn't process that.";
+      if (!response.ok) throw new Error('Proxy infrastructure offline');
+
+      const data = await response.json();
+      
+      if (data.ui_action === 'show_catalog') setShowCatalog(true);
+      if (data.ui_action === 'show_booking') setShowBooking(true);
+
       const aiMsg: Message = { 
         role: 'assistant', 
-        content: aiText.replace(/\n/g, '<br>'), 
+        content: (data.response_text || "I'm sorry, I couldn't process that.").replace(/\n/g, '<br>'), 
         id: (Date.now() + 1).toString() 
       };
       setMessages(prev => [...prev, aiMsg]);
+
     } catch (error) {
       console.error("Chat error:", error);
       const errorMsg: Message = { 
