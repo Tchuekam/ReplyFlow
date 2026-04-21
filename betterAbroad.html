@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ============================================================
+     BETTER ABROAD — Complete Study Abroad Platform
+     ============================================================
+     HOW TO EDIT THIS FILE:
+     ─────────────────────────────────────────────────────────────
+     • Use Ctrl+F to search for "EDIT:" labels to find editable spots
+     • Each section has a clear start/end comment
+     • Text you'll want to change is marked with 📝 EDIT: comments
+     • Colors are all stored in ONE place — search for "COLOR PALETTE"
+     • Images: replace src="" with your image path or URL
+     • WhatsApp: search for "wa.me" and change the phone number
+     • Contact info: search for "CONTACT DETAILS" section
+     ─────────────────────────────────────────────────────────────
+     SECTIONS IN ORDER:
+     1.  HEAD          — fonts, meta tags, page title
+     2.  CSS VARIABLES — ONE place to change all colors
+     3.  GLOBAL CSS    — base styles (rarely need to edit)
+     4.  HEADER        — logo + navigation links
+     5.  HERO          — big headline + lead capture form
+     6.  STATS         — animated counters (30+, 200+, 98%)
+     7.  MARQUEE       — scrolling partner logos
+     8.  SERVICES      — 6 service cards
+     9.  COURSE FINDER — searchable university database
+     10. BOOKING       — calendar consultation booking
+     11. TESTIMONIALS  — student success stories
+     12. FAQ           — frequently asked questions
+     13. CONTACT FORM  — enquiry form
+     14. FOOTER        — links, social icons, contact details
+     15. JAVASCRIPT    — all interactive logic (advanced editing)
+     ============================================================ -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       📝 EDIT: PAGE TITLE & META DESCRIPTION
+       The title appears in browser tabs and Google search results.
+       The description appears under your link in Google (160 chars max).
+       ============================================================ -->
+  <title>Better Abroad | Study Abroad Consultants | Free Guidance</title>
+  <meta name="description" content="Better Abroad is your trusted partner for studying abroad. Free guidance on university selection, visa assistance, and scholarships. Start your journey today!" />
+  <meta name="keywords" content="Study Abroad, Education Consultants, Overseas Education, University Selection, Visa Assistance, Scholarships" />
+  <!-- ============================================================ -->
+
+  <!-- Google Fonts — Playfair Display (headings) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome icons (used for arrows, checkmarks, social icons etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+
+    /* ============================================================
+       COLOR PALETTE — CHANGE ALL COLORS HERE IN ONE PLACE
+       ============================================================
+       📝 EDIT: To rebrand, just change these values.
+       --navy       = main brand color (buttons, headings, links)
+       --navy-dark  = darker shade of navy (hero gradient start)
+       --navy-light = lighter shade (hero gradient end)
+       --crimson    = accent color (highlights, CTA buttons, borders)
+       --slate      = light page background
+       --text       = main body text color
+       --muted      = secondary/grey text color
+       --border     = card/input border color
+       ============================================================ */
+    :root {
+      --navy:       #1e40af;
+      --navy-dark:  #1e3a8a;
+      --navy-light: #3b82f6;
+      --crimson:    #D21034;
+      --crimson-h:  #b00d2b;   /* hover state for crimson */
+      --slate:      #f8fafc;
+      --text:       #1e293b;
+      --muted:      #64748b;
+      --border:     #e2e8f0;
+      --white:      #ffffff;
+    }
+    /* ============================================================ */
+
+    /* ── BASE RESET & GLOBAL STYLES ─────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
+
+    /* Reusable container to center + limit width */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Reusable section padding */
+    .section { padding: 100px 0; }
+
+    /* Section labels (small uppercase badge above headings) */
+    .section-label {
+      display: inline-block;
+      background: rgba(30, 64, 175, 0.1);
+      color: var(--navy);
+      padding: 5px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* Section headings */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .section-title .accent {
+      font-style: italic;
+      color: var(--navy);
+    }
+    .section-title.center { text-align: center; }
+
+    /* Section subtitle (paragraph under heading) */
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 520px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    /* Primary button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 30px;
+      background: var(--navy);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: 2px solid var(--navy);
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 6px 20px rgba(30,64,175,0.35);
+    }
+    .btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); }
+    .btn.crimson { background: var(--crimson); border-color: var(--crimson); box-shadow: 0 6px 20px rgba(210,16,52,0.35); }
+    .btn.crimson:hover { background: var(--crimson-h); border-color: var(--crimson-h); }
+    .btn.outline { background: transparent; color: white; border-color: rgba(255,255,255,0.5); box-shadow: none; }
+    .btn.outline:hover { background: rgba(255,255,255,0.12); }
+
+    /* Pill / tag badges */
+    .pill {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────────────────────── */
+    @keyframes fadeUp    { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes slideRight{ from { opacity:0; transform:translateX(-24px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes popBounce { 0%{transform:scale(0)} 60%{transform:scale(1.15)} 100%{transform:scale(1)} }
+    @keyframes pulse     { 0%,100%{opacity:1} 50%{opacity:.45} }
+    @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @keyframes countUp   { from{opacity:0} to{opacity:1} }
+
+    /* ── SKELETON LOADER (while cards are "loading") ──────────────── */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f4f8 25%, #e2e8f0 50%, #f0f4f8 75%);
+      background-size: 400px 100%;
+      animation: pulse 1.8s ease infinite;
+      border-radius: 6px;
+    }
+
+
+    /* ============================================================
+       SECTION: HEADER / NAVIGATION
+       ============================================================ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s;
+    }
+    header .inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    /* Logo text */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    /* 📝 EDIT: Change "Abroad" to whatever you want red */
+    .logo span { color: var(--crimson); }
+
+    /* Navigation links */
+    nav ul { list-style: none; display: flex; gap: 4px; }
+    nav a {
+      display: block;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s;
+      text-transform: capitalize;
+    }
+    nav a:hover, nav a.active { color: var(--navy); background: rgba(30,64,175,0.08); }
+
+    /* CTA button in header */
+    .header-cta {
+      padding: 10px 22px;
+      font-size: 14px;
+    }
+
+
+    /* ============================================================
+       SECTION: HERO — Main headline + lead form
+       ============================================================ */
+    #home {
+      background: linear-gradient(145deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-light) 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative grid overlay */
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    /* Glowing orb top-right */
+    #home::after {
+      content: '';
+      position: absolute;
+      top: 5%; right: 5%;
+      width: 450px; height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(210,16,52,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    /* Hero splits into 2 columns */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    /* LEFT column */
+    .hero-left { color: white; animation: slideRight 0.8s ease both; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 62px);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+    .hero-title .blue-italic { color: #93c5fd; font-style: italic; }
+    .hero-desc {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-bullets { display: flex; flex-direction: column; gap: 13px; margin-bottom: 40px; }
+    .hero-bullets li { color: rgba(255,255,255,0.85); font-size: 15px; list-style: none; display: flex; align-items: center; gap: 10px; }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    /* Mini stat row below buttons */
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: white; }
+    .hero-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* RIGHT column — the form card */
+    .hero-form-wrap { animation: fadeUp 0.8s 0.2s ease both; position: relative; }
+    /* Confetti canvas sits behind the form */
+    #confetti-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 10;
+      border-radius: 16px;
+    }
+    .hero-form-card {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      padding: 44px 38px;
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    }
+    /* Step progress dots */
+    .form-steps { display: flex; align-items: center; gap: 8px; margin-bottom: 26px; }
+    .step-dot {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      background: #f1f5f9; color: var(--muted);
+      transition: all 0.3s;
+    }
+    .step-dot.active { background: var(--crimson); color: white; }
+    .step-dot.done   { background: var(--navy);    color: white; }
+    .step-line { width: 36px; height: 1px; background: var(--border); transition: background 0.3s; }
+    .step-line.done { background: var(--navy); }
+    .step-label { font-size: 12px; color: var(--muted); margin-left: 6px; }
+    /* Form heading */
+    .form-heading { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text); margin-bottom: 6px; }
+    .form-subhead { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    /* Form field group */
+    .form-group { margin-bottom: 15px; }
+    .form-label {
+      display: block;
+      font-size: 11px; font-weight: 700;
+      color: #475569;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      background: #fafbfe;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .form-input:focus { border-color: var(--navy); background: white; }
+    .form-input.error { border-color: var(--crimson); background: #fff5f5; }
+    .form-error { color: var(--crimson); font-size: 12px; margin-top: 4px; }
+    /* Large submit button */
+    .form-submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 6px 20px rgba(30,64,175,0.4);
+      transition: background 0.2s;
+      margin-top: 6px;
+    }
+    .form-submit-btn:hover { background: var(--navy-dark); }
+    .form-submit-btn.red  { background: var(--crimson); box-shadow: 0 6px 20px rgba(210,16,52,0.4); }
+    .form-submit-btn.red:hover { background: var(--crimson-h); }
+    .form-privacy { text-align: center; font-size: 11px; color: #94a3b8; margin-top: 12px; }
+    /* Success state */
+    .form-success { text-align: center; padding: 12px 0; animation: fadeUp 0.5s ease; display: none; }
+    .success-icon {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 34px; margin: 0 auto 20px;
+      box-shadow: 0 10px 28px rgba(30,64,175,0.4);
+      animation: popBounce 0.5s 0.1s ease both;
+    }
+    .success-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--text); margin-bottom: 10px; }
+    .success-desc  { color: var(--muted); line-height: 1.7; margin-bottom: 22px; font-size: 15px; }
+    .whatsapp-btn  {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25D366; color: white;
+      padding: 13px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; text-decoration: none;
+    }
+
+
+    /* ============================================================
+       SECTION: STATS — Animated counters
+       ============================================================ */
+    #stats {
+      background: linear-gradient(160deg, #f4f7fc, #eef2ff);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Dot pattern background */
+    #stats::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(30,64,175,0.08) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 14px;
+      padding: 40px 28px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(30,64,175,0.12);
+      border-color: rgba(30,64,175,0.3);
+    }
+    /* Color bar on top */
+    .stat-card-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .stat-icon   { font-size: 34px; margin-bottom: 14px; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 4vw, 64px);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -2px;
+    }
+    .stat-label  { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .stat-sub    { font-size: 13px; color: var(--muted); }
+    /* Trust badges below stats */
+    .stats-badges { display: flex; justify-content: center; gap: 40px; margin-top: 52px; flex-wrap: wrap; }
+    .stats-badges span { color: var(--muted); font-size: 14px; font-weight: 500; }
+
+
+    /* ============================================================
+       SECTION: PARTNER LOGO MARQUEE
+       ============================================================ */
+    #marquee-section {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+      overflow: hidden;
+    }
+    .marquee-title {
+      font-size: 11px; font-weight: 700;
+      color: #94a3b8; text-transform: uppercase;
+      letter-spacing: 3px; text-align: center;
+      margin-bottom: 24px;
+    }
+    /* Outer wrapper clips overflow */
+    .marquee-outer { position: relative; display: flex; overflow: hidden; }
+    /* Left + right fade masks */
+    .marquee-fade-l, .marquee-fade-r {
+      position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+    }
+    .marquee-fade-l { left: 0;  background: linear-gradient(90deg, white, transparent); }
+    .marquee-fade-r { right: 0; background: linear-gradient(-90deg, white, transparent); }
+    /* The scrolling track */
+    .marquee-track { display: flex; gap: 20px; will-change: transform; }
+    /* Pause on hover */
+    #marquee-section:hover .marquee-track { animation-play-state: paused !important; }
+    /* Each partner logo card */
+    .partner-card {
+      display: flex; align-items: center; gap: 12px;
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 20px;
+      white-space: nowrap; flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.2s;
+    }
+    .partner-card:hover { transform: scale(1.03); }
+    .partner-logo {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 11px; font-weight: 800; flex-shrink: 0;
+    }
+    .partner-name { font-weight: 600; font-size: 13px; color: var(--text); }
+    .partner-tag  { font-size: 11px; color: var(--muted); }
+
+
+    /* ============================================================
+       SECTION: SERVICES — 6 Service cards
+       ============================================================ */
+    #services { background: #fafbfe; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-top-color: var(--crimson);
+      box-shadow: 0 12px 32px rgba(30,64,175,0.12);
+      border-color: rgba(30,64,175,0.25);
+    }
+    .service-icon  { font-size: 38px; margin-bottom: 18px; }
+    .service-title { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text); margin-bottom: 12px; font-weight: 700; }
+    .service-desc  { color: var(--muted); line-height: 1.8; font-size: 15px; }
+
+
+    /* ============================================================
+       SECTION: COURSE FINDER — Search + Filter + University Cards
+       ============================================================ */
+    #courses { background: white; padding-bottom: 100px; }
+    /* Top dark band with search bar */
+    .courses-header {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      padding: 70px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .courses-header::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 280px; height: 280px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .courses-header .inner-text { text-align: center; margin-bottom: 36px; }
+    .courses-badge { display: inline-block; background: rgba(210,16,52,0.25); color: #ff8098; padding: 5px 14px; border-radius: 4px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+    .courses-title { font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,44px); color: white; margin-bottom: 10px; font-weight: 800; }
+    .courses-sub   { color: rgba(255,255,255,0.6); font-size: 16px; }
+    /* Search input */
+    .search-wrap { max-width: 620px; margin: 0 auto; position: relative; }
+    .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #94a3b8; pointer-events: none; }
+    #uni-search {
+      width: 100%; padding: 18px 52px 18px 52px;
+      background: white; border: 2px solid transparent;
+      border-radius: 10px; font-size: 16px; outline: none;
+      font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      box-sizing: border-box; transition: border-color 0.2s;
+    }
+    #uni-search:focus { border-color: var(--crimson); }
+    .search-clear {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: #f1f5f9; border: none; border-radius: 50%;
+      width: 28px; height: 28px; cursor: pointer; font-size: 14px; color: var(--muted);
+      display: none; align-items: center; justify-content: center;
+    }
+    /* Autocomplete suggestions dropdown */
+    #suggestions {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+      background: white; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 50;
+      border: 1px solid var(--border); display: none;
+    }
+    .suggestion-item {
+      padding: 13px 18px; display: flex; align-items: center; gap: 12px;
+      cursor: pointer; transition: background 0.15s; border-bottom: 1px solid var(--border);
+    }
+    .suggestion-item:last-child { border-bottom: none; }
+    .suggestion-item:hover { background: #f8fafc; }
+    .sugg-logo { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+    .sugg-name { font-weight: 600; font-size: 13px; color: var(--text); }
+    .sugg-meta { font-size: 12px; color: var(--muted); }
+    .sugg-tuition { color: var(--crimson); font-size: 13px; font-weight: 700; margin-left: auto; }
+
+    /* Main 2-col layout: sidebar + grid */
+    .courses-body { max-width: 1200px; margin: -48px auto 0; padding: 0 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; }
+    /* Filter sidebar */
+    .filter-sidebar { background: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; position: sticky; top: 90px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); height: fit-content; }
+    .filter-header { padding: 18px 20px; border-bottom: 1px solid #f0f4f8; background: #fafbfe; display: flex; justify-content: space-between; align-items: center; }
+    .filter-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--text); }
+    .filter-count { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .filter-reset { background: #fff0f3; color: var(--crimson); border: none; padding: 5px 10px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer; display: none; }
+    .filter-group { padding: 16px 20px; border-bottom: 1px solid #f0f4f8; }
+    .filter-group-label { font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .filter-options { display: flex; flex-direction: column; gap: 4px; }
+    .filter-btn {
+      text-align: left; background: transparent; border: none;
+      color: var(--muted); padding: 7px 10px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover { background: #f0f4ff; color: var(--text); }
+    .filter-btn.active { background: var(--navy); color: white; font-weight: 600; }
+    .filter-footer { padding: 14px 20px; background: #fafbfe; font-size: 11px; color: #94a3b8; text-align: center; line-height: 1.6; }
+    /* Results info bar */
+    .results-bar { background: white; border-radius: 10px; padding: 12px 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .results-count { font-size: 14px; color: var(--muted); }
+    .results-sort  { font-size: 12px; color: #94a3b8; }
+    /* University cards grid */
+    .uni-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; }
+    .uni-card {
+      background: white; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer; animation: fadeUp 0.4s ease both;
+    }
+    .uni-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+    .uni-card-bar  { height: 5px; }
+    .uni-card-body { padding: 22px 20px; }
+    .uni-card-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+    .uni-logo { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+    .uni-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; margin-bottom: 4px; }
+    .uni-location { font-size: 13px; color: var(--muted); }
+    .uni-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+    .uni-footer { display: flex; justify-content: space-between; align-items: center; }
+    .tuition-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+    .tuition-value { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 800; color: var(--text); }
+    .apply-btn { background: #f8fafc; color: var(--muted); border: 1px solid var(--border); padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+    /* No results */
+    .no-results { grid-column: 1/-1; text-align: center; padding: 70px 20px; color: var(--muted); }
+    .no-results-icon { font-size: 48px; margin-bottom: 12px; }
+    /* Skeleton cards */
+    .skel-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .skel-bar  { height: 5px; }
+    .skel-body { padding: 22px 20px; }
+    .skel-row  { height: 12px; border-radius: 4px; margin-bottom: 10px; }
+    .skel-row.short { width: 60%; }
+    .skel-row.wide  { width: 100%; }
+
+
+    /* ============================================================
+       SECTION: CONSULTATION BOOKING — Calendar + slot picker
+       ============================================================ */
+    #booking { background: linear-gradient(160deg, #f4f7fc, #eef2ff); padding: 100px 0; }
+    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+    /* Mini calendar */
+    .mini-cal { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .cal-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid #f0f4f8; background: #fafbfe; }
+    .cal-nav { background: none; border: 1px solid var(--border); width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 16px; font-family: serif; }
+    .cal-month { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--text); }
+    .cal-body { padding: 14px 18px; }
+    .cal-day-names { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 6px; }
+    .cal-day-name { text-align: center; font-size: 10px; font-weight: 700; color: #94a3b8; padding: 3px 0; text-transform: uppercase; }
+    .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-day {
+      border: none; border-radius: 8px; padding: 9px 0;
+      font-size: 12px; cursor: pointer; background: transparent;
+      color: var(--text); transition: all 0.15s; position: relative;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .cal-day:hover:not(:disabled) { background: #f0f4ff; }
+    .cal-day.selected { background: var(--navy) !important; color: white !important; font-weight: 700; }
+    .cal-day.today { outline: 2px solid var(--crimson); outline-offset: -2px; color: var(--crimson); font-weight: 700; }
+    .cal-day:disabled { cursor: default; color: #d1d5db; }
+    .cal-day .dot { position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--crimson); }
+    .cal-day.selected .dot { background: rgba(255,255,255,0.6); }
+    .cal-footer { padding: 10px 18px; border-top: 1px solid #f0f4f8; background: #fafbfe; font-size: 10px; color: #94a3b8; }
+    /* Date info panel (right of calendar) */
+    .date-panel { background: white; border-radius: 14px; border: 1px solid var(--border); padding: 32px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    .date-panel-icon { font-size: 36px; margin-bottom: 18px; }
+    .date-panel-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text); margin-bottom: 12px; }
+    .date-panel-desc { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
+    .consultant-row { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #f0f4f8; }
+    .consultant-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+    .consultant-name  { font-weight: 700; color: var(--text); font-size: 14px; }
+    .consultant-title { color: var(--muted); font-size: 12px; }
+    /* Slot picker */
+    .slots-panel { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    .slots-header { padding: 18px 22px; border-bottom: 1px solid #f0f4f8; background: #fafbfe; display: flex; justify-content: space-between; align-items: center; }
+    .slots-date-label { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--text); }
+    .slots-avail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .slots-back { background: none; border: 1px solid var(--border); color: var(--muted); padding: 7px 13px; border-radius: 6px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+    .slots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 22px; }
+    .slot-btn {
+      padding: 12px 8px; border-radius: 8px; font-size: 13px; cursor: pointer;
+      background: white; color: var(--text); border: 1px solid var(--border);
+      font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+    }
+    .slot-btn:hover:not(:disabled) { background: #f0f4ff; border-color: var(--navy); color: var(--navy); }
+    .slot-btn.selected { background: var(--navy); color: white; border-color: var(--navy); font-weight: 700; }
+    .slot-btn:disabled { text-decoration: line-through; color: #cbd5e1; cursor: default; background: #f8fafc; border-color: #f0f4f8; }
+    .slots-confirm-btn { margin: 0 22px 22px; width: calc(100% - 44px); padding: 15px; background: var(--crimson); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; box-shadow: 0 6px 20px rgba(210,16,52,0.35); }
+    .slots-confirm-btn:disabled { background: #e2e8f0; color: var(--muted); box-shadow: none; cursor: default; }
+    /* Confirmation form */
+    .confirm-panel { background: white; border-radius: 14px; border: 1px solid var(--border); padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    .confirm-title { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text); margin-bottom: 6px; }
+    .confirm-meta  { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+    .booking-error { background: #fff0f3; border: 1px solid #fecdd3; color: #be123c; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 14px; display: none; }
+    .confirm-note { text-align: center; font-size: 11px; color: #94a3b8; margin-top: 10px; }
+    /* Booking success */
+    .booking-success { background: white; border-radius: 16px; border: 1px solid var(--border); padding: 56px 40px; text-align: center; max-width: 580px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.07); animation: fadeUp 0.5s ease; display: none; }
+    .booking-summary { background: #fafbfe; border-radius: 12px; border: 1px solid var(--border); padding: 22px; margin-bottom: 24px; text-align: left; }
+    .booking-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f4f8; }
+    .booking-row:last-child { border-bottom: none; }
+    .booking-row-key { font-size: 13px; color: var(--muted); }
+    .booking-row-val { font-size: 13px; font-weight: 600; color: var(--text); max-width: 220px; text-align: right; }
+    .booking-row-val a { color: var(--navy); }
+    .booking-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    /* Step indicator for booking */
+    .booking-steps { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; align-items: center; }
+
+
+    /* ============================================================
+       SECTION: TESTIMONIALS
+       ============================================================ */
+    #testimonials { background: white; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .testimonial-card {
+      background: white; border-radius: 12px; padding: 36px 28px;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(30,64,175,0.1); }
+    .testimonial-quote  { font-size: 32px; color: rgba(30,64,175,0.3); margin-bottom: 16px; font-family: serif; }
+    .testimonial-text   { color: var(--muted); line-height: 1.8; font-style: italic; font-size: 15px; margin-bottom: 22px; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid #f0f4f8; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 15px; font-weight: 700; flex-shrink: 0; }
+    .testimonial-name   { font-weight: 700; color: var(--text); font-size: 14px; }
+    .testimonial-pos    { color: var(--muted); font-size: 12px; }
+
+
+    /* ============================================================
+       SECTION: FAQ — Accordion
+       ============================================================ */
+    #faq { background: #fafbfe; }
+    .faq-list  { max-width: 800px; margin: 0 auto; }
+    .faq-item  { border-bottom: 1px solid var(--border); overflow: hidden; }
+    .faq-question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 0; text-align: left; gap: 16px;
+    }
+    .faq-q-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--text); transition: color 0.2s; }
+    .faq-item.open .faq-q-text { color: var(--navy); }
+    .faq-arrow { font-size: 18px; color: var(--navy); flex-shrink: 0; transition: transform 0.3s; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p { color: var(--muted); line-height: 1.8; padding-bottom: 22px; font-size: 15px; }
+
+
+    /* ============================================================
+       SECTION: CONTACT FORM
+       ============================================================ */
+    #contact {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .contact-header { text-align: center; margin-bottom: 48px; }
+    .contact-badge  { display: inline-block; background: rgba(255,255,255,0.12); color: white; padding: 5px 16px; border-radius: 4px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+    .contact-title  { font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,44px); color: white; margin-bottom: 10px; }
+    .contact-sub    { color: rgba(255,255,255,0.65); font-size: 16px; }
+    /* White form card */
+    .contact-card { background: rgba(255,255,255,0.97); border-radius: 16px; padding: 44px 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.35); max-width: 750px; margin: 0 auto; position: relative; z-index: 1; }
+    .contact-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .contact-privacy { text-align: center; margin-top: 14px; font-size: 12px; color: #94a3b8; }
+    /* Contact success */
+    .contact-success { text-align: center; padding: 40px 0; display: none; }
+    .contact-success-icon { font-size: 52px; margin-bottom: 20px; animation: popBounce 0.5s ease; }
+
+
+    /* ============================================================
+       SECTION: FOOTER
+       ============================================================ */
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 60px 0 24px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; margin-bottom: 14px; }
+    .footer-brand-name span { color: var(--crimson); }
+    .footer-brand-desc { color: #94a3b8; font-size: 14px; line-height: 1.8; max-width: 280px; margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: white;
+      font-size: 16px; transition: background 0.2s;
+    }
+    .social-icon:hover { background: var(--navy); }
+    .footer-col-title { font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-link { color: #94a3b8; font-size: 14px; cursor: pointer; transition: color 0.2s; text-decoration: none; }
+    .footer-link:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { color: #475569; font-size: 13px; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal span { color: #475569; font-size: 13px; cursor: pointer; }
+
+
+    /* ============================================================
+       RESPONSIVE — Mobile adjustments
+       ============================================================
+       📝 EDIT: Adjust breakpoints if needed.
+       Currently collapses to single column at 900px for grids.
+       ============================================================ */
+    @media (max-width: 960px) {
+      .hero-grid       { grid-template-columns: 1fr; gap: 48px; }
+      .courses-body    { grid-template-columns: 1fr; }
+      .filter-sidebar  { position: static; }
+      .booking-grid    { grid-template-columns: 1fr; }
+      .footer-grid     { grid-template-columns: 1fr 1fr; }
+      .contact-grid-2  { grid-template-columns: 1fr; }
+      nav ul           { display: none; } /* Simple mobile hide — add hamburger menu if needed */
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 32px; }
+      .section    { padding: 60px 0; }
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <!-- ============================================================
+       HEADER & NAVIGATION
+       ============================================================
+       📝 EDIT: Change nav links, logo text, CTA button text.
+       The "active" class is added by JS as you scroll.
+       ============================================================ -->
+  <header id="main-header">
+    <div class="container">
+      <div class="inner">
+
+        <!-- 📝 EDIT: Logo text — "Better" + colored "Abroad" -->
+        <a href="#home" class="logo">Better<span>Abroad</span></a>
+
+        <!-- 📝 EDIT: Nav links — change the text inside each <a> -->
+        <nav>
+          <ul>
+            <li><a href="#home"         class="nav-link active">Home</a></li>
+            <li><a href="#services"     class="nav-link">Services</a></li>
+            <li><a href="#courses"      class="nav-link">Courses</a></li>
+            <li><a href="#booking"      class="nav-link">Book Free Call</a></li>
+            <li><a href="#faq"          class="nav-link">FAQ</a></li>
+            <li><a href="#contact"      class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- 📝 EDIT: Header CTA button text + destination -->
+        <a href="#contact" class="btn crimson header-cta">Get Started Free →</a>
+
+      </div>
+    </div>
+  </header>
+  <!-- END HEADER -->
+
+
+  <!-- ============================================================
+       HERO SECTION
+       Two columns: Left = headline & bullets, Right = lead form
+       ============================================================ -->
+  <section id="home">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- ── LEFT COLUMN: Value Proposition ─────────────────── -->
+        <div class="hero-left">
+
+          <!-- 📝 EDIT: Small badge text above heading -->
+          <div class="hero-badge">✦ Free Consultation · Zero Hidden Fees</div>
+
+          <!-- 📝 EDIT: Main hero headline (3 lines) -->
+          <h1 class="hero-title">
+            Your Path to<br>
+            Global <span class="blue-italic">Education</span><br>
+            Starts Here.
+          </h1>
+
+          <!-- 📝 EDIT: Hero description paragraph -->
+          <p class="hero-desc">
+            Transform your future with personalized guidance from expert education consultants.
+            We help you achieve your dreams of studying abroad at top universities worldwide —
+            <strong>completely free of charge.</strong>
+          </p>
+
+          <!-- 📝 EDIT: 3 bullet points — change the text after the emoji -->
+          <ul class="hero-bullets">
+            <li>🛡️ Verified partner universities across 40+ countries</li>
+            <li>💸 100% free — we earn from universities, never from you</li>
+            <li>⚡ 48-hour response guarantee on all enquiries</li>
+          </ul>
+
+          <!-- 📝 EDIT: Hero buttons — change text and WhatsApp number -->
+          <div class="hero-buttons">
+            <a href="#contact" class="btn crimson">Get Started Free →</a>
+            <!-- 📝 EDIT: Change 1234567890 to your WhatsApp number (no spaces, with country code) -->
+            <a href="https://wa.me/1234567890" target="_blank" class="btn outline">💬 WhatsApp Us</a>
+          </div>
+
+          <!-- 📝 EDIT: 3 mini stats at the bottom of the hero -->
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-num">5,000+</div>
+              <div class="hero-stat-lbl">Students Placed</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">200+</div>
+              <div class="hero-stat-lbl">Partner Universities</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">98%</div>
+              <div class="hero-stat-lbl">Visa Success</div>
+            </div>
+          </div>
+
+        </div>
+        <!-- END LEFT COLUMN -->
+
+        <!-- ── RIGHT COLUMN: Multi-Step Lead Capture Form ─────── -->
+        <div class="hero-form-wrap">
+
+          <!-- Confetti canvas (JS draws on this on form submit) -->
+          <canvas id="confetti-canvas"></canvas>
+
+          <div class="hero-form-card">
+
+            <!-- Step progress indicator -->
+            <div class="form-steps">
+              <div class="step-dot active" id="step-dot-1">1</div>
+              <div class="step-line" id="step-line-1"></div>
+              <div class="step-dot" id="step-dot-2">2</div>
+              <div class="step-label" id="step-label-text">Personal Details</div>
+            </div>
+
+            <!-- ── STEP 1: Name, Email, Phone ──────────────────── -->
+            <div id="form-step-1">
+              <!-- 📝 EDIT: Step 1 heading and subheading -->
+              <h2 class="form-heading">Check Your Eligibility</h2>
+              <p class="form-subhead">Free assessment — takes under 60 seconds.</p>
+
+              <div class="form-group">
+                <label class="form-label" for="h-name">Full Name *</label>
+                <!-- 📝 EDIT: Change placeholder text to match your audience -->
+                <input class="form-input" type="text" id="h-name" placeholder="Your full name as on passport">
+                <div class="form-error" id="err-name"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="h-email">Email Address *</label>
+                <input class="form-input" type="email" id="h-email" placeholder="your@email.com">
+                <div class="form-error" id="err-email"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="h-phone">WhatsApp / Phone *</label>
+                <!-- 📝 EDIT: Change country code suggestion in placeholder -->
+                <input class="form-input" type="tel" id="h-phone" placeholder="+237 690 000 000">
+                <div class="form-error" id="err-phone"></div>
+              </div>
+
+              <!-- 📝 EDIT: Step 1 button text -->
+              <button class="form-submit-btn" onclick="heroNextStep()">Continue to Step 2 →</button>
+              <p class="form-privacy">🔒 Secure & confidential. We never sell your data.</p>
+            </div>
+
+            <!-- ── STEP 2: Country + Education Level ──────────── -->
+            <div id="form-step-2" style="display:none;">
+              <!-- 📝 EDIT: Step 2 heading and subheading -->
+              <h2 class="form-heading">Almost There!</h2>
+              <p class="form-subhead">Help us match you to the right programme.</p>
+
+              <div class="form-group">
+                <label class="form-label" for="h-country">Study Destination *</label>
+                <!-- 📝 EDIT: Add or remove destination options as needed -->
+                <select class="form-input" id="h-country">
+                  <option value="">Where do you want to study?</option>
+                  <option>United Kingdom</option>
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Australia</option>
+                  <option>New Zealand</option>
+                  <option>Singapore</option>
+                  <option>Ireland</option>
+                  <option>Germany</option>
+                  <option>France</option>
+                  <option>Netherlands</option>
+                </select>
+                <div class="form-error" id="err-country"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="h-level">Current Education Level *</label>
+                <!-- 📝 EDIT: Add or remove education level options -->
+                <select class="form-input" id="h-level">
+                  <option value="">What's your current qualification?</option>
+                  <option>High School / A-Levels</option>
+                  <option>Diploma</option>
+                  <option>Bachelor's Degree</option>
+                  <option>Master's Degree</option>
+                  <option>PhD / Doctorate</option>
+                </select>
+                <div class="form-error" id="err-level"></div>
+              </div>
+
+              <div style="display:flex; gap:10px; margin-top:6px;">
+                <button class="form-submit-btn" style="flex:1;background:#f1f5f9;color:var(--muted);box-shadow:none;" onclick="heroPrevStep()">← Back</button>
+                <!-- 📝 EDIT: Final submit button text -->
+                <button class="form-submit-btn red" style="flex:2;" onclick="heroSubmit()">Submit Free Application ✓</button>
+              </div>
+              <p class="form-privacy">🔒 Secure & confidential. We never sell your data.</p>
+            </div>
+
+            <!-- ── SUCCESS STATE (shown after submit) ────────── -->
+            <div class="form-success" id="form-success">
+              <div class="success-icon">✓</div>
+              <!-- 📝 EDIT: Success heading (JS inserts the person's first name) -->
+              <h2 class="success-title">You're In, <span id="success-name">there</span>!</h2>
+              <!-- 📝 EDIT: Success message text -->
+              <p class="success-desc">
+                Your free eligibility check for <strong id="success-country">your destination</strong> has been submitted.
+                Our consultant will contact you at <strong id="success-email"></strong> within 24 hours.
+              </p>
+              <!-- 📝 EDIT: WhatsApp number in the success button too -->
+              <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-btn">💬 Chat on WhatsApp Now</a>
+              <br><br>
+              <a href="#" onclick="heroReset()" style="font-size:13px;color:var(--muted);">Submit another enquiry</a>
+            </div>
+
+          </div>
+        </div>
+        <!-- END RIGHT COLUMN -->
+
+      </div>
+    </div>
+  </section>
+  <!-- END HERO -->
+
+
+  <!-- ============================================================
+       STATS SECTION — Animated count-up numbers
+       ============================================================
+       📝 EDIT: To change a stat, find its <span data-target="..."> and
+       update the data-target number, suffix (+ or %), label, and sub text.
+       The count-up animation is triggered by IntersectionObserver in JS.
+       ============================================================ -->
+  <section id="stats">
+    <div class="container" style="position:relative;z-index:1;">
+      <!-- Section heading -->
+      <div style="text-align:center;margin-bottom:60px;">
+        <span class="section-label">By The Numbers</span>
+        <h2 class="section-title center" style="margin-top:10px;">
+          <span class="accent">Proven</span> Results, Every Year
+        </h2>
+        <!-- 📝 EDIT: Stats intro paragraph -->
+        <p class="section-sub">Numbers that speak for thousands of students who trusted us with their futures.</p>
+      </div>
+
+      <div class="stats-grid">
+
+        <!-- 📝 EDIT: Stat 1 — Change data-target, data-suffix, label, sub -->
+        <div class="stat-card">
+          <div class="stat-card-bar" style="background:linear-gradient(90deg,#1e40af,#3b82f6);"></div>
+          <div class="stat-icon">🏛️</div>
+          <div class="stat-number" style="color:#1e40af;">
+            <span class="count-up" data-target="3" data-suffix="+">0</span>+
+          </div>
+          <div class="stat-label">Years of Experience</div>
+          <div class="stat-sub">Trusted guidance since 2023</div>
+        </div>
+
+        <!-- 📝 EDIT: Stat 2 -->
+        <div class="stat-card">
+          <div class="stat-card-bar" style="background:linear-gradient(90deg,#0a6640,#16a34a);"></div>
+          <div class="stat-icon">🌍</div>
+          <div class="stat-number" style="color:#0a6640;">
+            <span class="count-up" data-target="1000" data-suffix="+">0</span>+
+          </div>
+          <div class="stat-label">Students Placed</div>
+          <div class="stat-sub">Dreams fulfilled globally</div>
+        </div>
+
+        <!-- 📝 EDIT: Stat 3 -->
+        <div class="stat-card">
+          <div class="stat-card-bar" style="background:linear-gradient(90deg,#7c3aed,#a855f7);"></div>
+          <div class="stat-icon">🎓</div>
+          <div class="stat-number" style="color:#7c3aed;">
+            <span class="count-up" data-target="50" data-suffix="+">0</span>+
+          </div>
+          <div class="stat-label">Partner Universities</div>
+          <div class="stat-sub">Across 40+ countries</div>
+        </div>
+
+        <!-- 📝 EDIT: Stat 4 -->
+        <div class="stat-card">
+          <div class="stat-card-bar" style="background:linear-gradient(90deg,#D21034,#ef4444);"></div>
+          <div class="stat-icon">✈️</div>
+          <div class="stat-number" style="color:#D21034;">
+            <span class="count-up" data-target="98" data-suffix="%">0</span>%
+          </div>
+          <div class="stat-label">Visa Success Rate</div>
+          <div class="stat-sub">Industry-leading approval</div>
+        </div>
+
+      </div>
+
+      <!-- 📝 EDIT: Trust badges below the stats — change emoji and text -->
+      <div class="stats-badges">
+        <span>🛡️ 100% Verified Partners</span>
+        <span>🔒 Zero Hidden Fees</span>
+        <span>⚡ 48hr Response Time</span>
+        <span>🎓 Free For All Students</span>
+      </div>
+
+    </div>
+  </section>
+  <!-- END STATS -->
+
+
+  <!-- ============================================================
+       PARTNER LOGO MARQUEE — Infinite scrolling logos
+       ============================================================
+       📝 EDIT: Add/remove partner cards inside .marquee-track.
+       The JS duplicates the track automatically to make it seamless.
+       To add a new partner:
+         1. Copy one <div class="partner-card"> block
+         2. Change the acronym, name, and tag text
+         3. Change the background color on .partner-logo
+       ============================================================ -->
+  <div id="marquee-section">
+    <!-- 📝 EDIT: Marquee title text -->
+    <div class="marquee-title">Our Verified Partner Institutions</div>
+
+    <div class="marquee-outer">
+      <div class="marquee-fade-l"></div>
+      <div class="marquee-fade-r"></div>
+
+      <!-- The track — JS will clone this for the infinite loop -->
+      <div class="marquee-track" id="marquee-track">
+
+        <!-- 📝 EDIT: Partner 1 — change acronym, name, tag, bg color -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#660099,#9333ea);">UoM</div>
+          <div><div class="partner-name">University of Manchester</div><div class="partner-tag">🇬🇧 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 2 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#002A5C,#1e40af);">UofT</div>
+          <div><div class="partner-name">University of Toronto</div><div class="partner-tag">🇨🇦 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 3 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#003087,#1d4ed8);">USyd</div>
+          <div><div class="partner-name">University of Sydney</div><div class="partner-tag">🇦🇺 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 4 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#003d7c,#1e40af);">NUS</div>
+          <div><div class="partner-name">NUS Singapore</div><div class="partner-tag">🇸🇬 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 5 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#169b62,#16a34a);">SEDA</div>
+          <div><div class="partner-name">SEDA College Dublin</div><div class="partner-tag">🇮🇪 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 6 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#d62828,#ef4444);">TUB</div>
+          <div><div class="partner-name">TU Berlin</div><div class="partner-tag">🇩🇪 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 7 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#ed1b2f,#f43f5e);">McGi</div>
+          <div><div class="partner-name">McGill University</div><div class="partner-tag">🇨🇦 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 8 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#c8102e,#ef4444);">ASBS</div>
+          <div><div class="partner-name">Alpine Swiss Business School</div><div class="partner-tag">🇨🇭 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 9 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#0055a4,#2563eb);">ScPo</div>
+          <div><div class="partner-name">Sciences Po Paris</div><div class="partner-tag">🇫🇷 Verified Partner</div></div>
+        </div>
+
+        <!-- 📝 EDIT: Partner 10 -->
+        <div class="partner-card">
+          <div class="partner-logo" style="background:linear-gradient(135deg,#003da5,#1e40af);">TUD</div>
+          <div><div class="partner-name">Delft University of Tech</div><div class="partner-tag">🇳🇱 Verified Partner</div></div>
+        </div>
+
+      </div><!-- end marquee-track -->
+    </div>
+  </div>
+  <!-- END MARQUEE -->
+
+
+  <!-- ============================================================
+       SERVICES SECTION — 6 Service Cards
+       ============================================================
+       📝 EDIT: To change a service card:
+         1. Change the emoji in <div class="service-icon">
+         2. Change the title in <div class="service-title">
+         3. Change the description paragraph
+       To add a 7th card, copy any card block and paste it inside the grid.
+       ============================================================ -->
+  <section id="services" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:60px;">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title center" style="margin-top:10px;">Our <span class="accent">Services</span></h2>
+        <!-- 📝 EDIT: Services intro text -->
+        <p class="section-sub">Comprehensive support from first consultation to landing at your dream university — all completely free.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- 📝 EDIT: Service Card 1 -->
+        <div class="service-card">
+          <div class="service-icon">📚</div>
+          <div class="service-title">Counseling & Guidance</div>
+          <p class="service-desc">
+            One-on-one consultation with our expert counselors to identify the best universities
+            and programs tailored to your academic goals and career aspirations.
+          </p>
+        </div>
+
+        <!-- 📝 EDIT: Service Card 2 -->
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <div class="service-title">University Applications</div>
+          <p class="service-desc">
+            Complete assistance with university applications, personal statements, and interview
+            preparation to maximize your chances of admission to top institutions.
+          </p>
+        </div>
+
+        <!-- 📝 EDIT: Service Card 3 -->
+        <div class="service-card">
+          <div class="service-icon">💰</div>
+          <div class="service-title">Scholarships & Loans</div>
+          <p class="service-desc">
+            We help you secure scholarships, financial aid packages, and education loans to
+            make your dream of studying abroad financially achievable.
+          </p>
+        </div>
+
+        <!-- 📝 EDIT: Service Card 4 -->
+        <div class="service-card">
+          <div class="service-icon">🛂</div>
+          <div class="service-title">Visa Assistance</div>
+          <p class="service-desc">
+            Expert guidance through the entire visa application process with a 98% success rate.
+            We handle all documentation and prepare you for interviews.
+          </p>
+        </div>
+
+        <!-- 📝 EDIT: Service Card 5 -->
+        <div class="service-card">
+          <div class="service-icon">✈️</div>
+          <div class="service-title">Travel & Accommodation</div>
+          <p class="service-desc">
+            Seamless arrangements for international travel, airport pickup, and comfortable
+            accommodation to make your arrival in your new country stress-free.
+          </p>
+        </div>
+
+        <!-- 📝 EDIT: Service Card 6 -->
+        <div class="service-card">
+          <div class="service-icon">📝</div>
+          <div class="service-title">Test Preparation</div>
+          <p class="service-desc">
+            Coaching for IELTS, TOEFL, GMAT, GRE, and all standardized tests required
+            for international university admissions. Study smart, score high.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END SERVICES -->
+
+
+  <!-- ============================================================
+       COURSE FINDER SECTION — Search + Filter + University Cards
+       ============================================================
+       📝 EDIT: The university data lives in the JAVASCRIPT section
+       below (search for "UNIVERSITY DATABASE"). Edit it there.
+
+       The filter options in the sidebar are also built by JS from
+       that data automatically — you don't need to edit the HTML here.
+       ============================================================ -->
+  <section id="courses">
+
+    <!-- Dark header band with search -->
+    <div class="courses-header">
+      <div class="container">
+        <div class="inner-text">
+          <div class="courses-badge">Course Finder</div>
+          <!-- 📝 EDIT: Course finder heading -->
+          <h2 class="courses-title">Find Your <em style="color:#93c5fd;">Perfect</em> Programme</h2>
+          <!-- 📝 EDIT: Course finder subtext — update the university count if you add more -->
+          <p class="courses-sub">Search 12 verified institutions across 10 countries</p>
+        </div>
+
+        <!-- Search input -->
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <!-- 📝 EDIT: Search placeholder text -->
+          <input type="text" id="uni-search" placeholder="Search universities, countries, subjects...">
+          <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+          <div id="suggestions"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results area -->
+    <div class="courses-body">
+
+      <!-- Filter Sidebar — built by JS -->
+      <div class="filter-sidebar">
+        <div class="filter-header">
+          <div>
+            <div class="filter-title">Filters</div>
+            <div class="filter-count" id="filter-count">12 found</div>
+          </div>
+          <button class="filter-reset" id="filter-reset" onclick="resetFilters()">Reset</button>
+        </div>
+        <div id="filter-groups"></div>
+        <div class="filter-footer">🛡 All institutions are verified partners</div>
+      </div>
+
+      <!-- University cards -->
+      <div>
+        <div class="results-bar">
+          <div class="results-count" id="results-count">Showing <strong>12</strong> results</div>
+          <div class="results-sort">Sorted by: Relevance</div>
+        </div>
+        <div class="uni-grid" id="uni-grid">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END COURSE FINDER -->
+
+
+  <!-- ============================================================
+       CONSULTATION BOOKING SECTION — Calendar + Slot Picker
+       ============================================================
+       📝 EDIT:
+       - Section heading and subtitle below
+       - Consultant name in the "consultant-row" div
+       - Available time slots: edit the SLOTS array in JS below
+       - Pre-booked dates: edit BOOKED_SLOTS in JS below
+       ============================================================ -->
+  <section id="booking" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;">
+        <span class="section-label">Book a Session</span>
+        <h2 class="section-title center" style="margin-top:10px;">
+          Free <span class="accent">30-Minute</span> Consultation
+        </h2>
+        <!-- 📝 EDIT: Booking section subtitle -->
+        <p class="section-sub">Speak directly with an expert. Get a personalized roadmap to your dream university — completely free.</p>
+      </div>
+
+      <!-- Step indicator (JS manages which dots are active) -->
+      <div class="booking-steps" id="booking-steps">
+        <div class="step-dot active" id="b-step-1">1</div>
+        <div class="step-line" id="b-line-1"></div>
+        <div class="step-dot" id="b-step-2">2</div>
+        <div class="step-line" id="b-line-2"></div>
+        <div class="step-dot" id="b-step-3">3</div>
+        <span style="font-size:13px;color:var(--muted);margin-left:8px;" id="b-step-label">Pick a Date</span>
+      </div>
+
+      <!-- ── CALENDAR STEP ──────────────────────────────────────── -->
+      <div id="booking-step-calendar" class="booking-grid">
+
+        <!-- Mini calendar (rendered by JS) -->
+        <div class="mini-cal">
+          <div class="cal-header">
+            <button class="cal-nav" onclick="calNav(-1)">&#8249;</button>
+            <span class="cal-month" id="cal-month-label">March 2026</span>
+            <button class="cal-nav" onclick="calNav(1)">&#8250;</button>
+          </div>
+          <div class="cal-body">
+            <div class="cal-day-names" id="cal-day-names"></div>
+            <div class="cal-days" id="cal-days"></div>
+          </div>
+          <div class="cal-footer">🔴 Dot = limited slots &nbsp;|&nbsp; Grey = unavailable</div>
+        </div>
+
+        <!-- Info panel right of calendar -->
+        <div class="date-panel">
+          <div class="date-panel-icon">📅</div>
+          <!-- JS updates this text when a date is selected -->
+          <h3 class="date-panel-title" id="date-panel-title">Select a date to begin</h3>
+          <!-- 📝 EDIT: Calendar description text -->
+          <p class="date-panel-desc">
+            Sessions are available Monday to Friday. Weekends and fully-booked days are
+            automatically greyed out. Red dots indicate days with limited slots remaining.
+            All times are in your local timezone.
+          </p>
+          <button class="form-submit-btn" id="view-slots-btn" onclick="showSlots()" disabled>
+            View Available Slots →
+          </button>
+
+          <!-- 📝 EDIT: Consultant name and title -->
+          <div class="consultant-row">
+            <div class="consultant-avatar">B</div>
+            <div>
+              <div class="consultant-name">Better Abroad Consultant</div>
+              <div class="consultant-title">Expert Counselor · Global Education Specialist</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end calendar step -->
+
+      <!-- ── SLOT PICKER STEP ────────────────────────────────────── -->
+      <div id="booking-step-slots" class="booking-grid" style="display:none;">
+
+        <div class="slots-panel">
+          <div class="slots-header">
+            <div>
+              <div class="slots-date-label" id="slots-date-label">Monday, March 5</div>
+              <div class="slots-avail" id="slots-avail-count">Loading slots...</div>
+            </div>
+            <button class="slots-back" onclick="showCalendar()">← Change date</button>
+          </div>
+
+          <!-- Slot buttons rendered by JS -->
+          <div class="slots-grid" id="slots-grid"></div>
+
+          <!-- Confirm slot button -->
+          <button class="slots-confirm-btn" id="slots-confirm-btn" onclick="showConfirm()" disabled>
+            Confirm slot →
+          </button>
+        </div>
+
+        <!-- Confirmation form (right panel) -->
+        <div class="confirm-panel" id="confirm-panel" style="display:none;">
+          <!-- 📝 EDIT: Confirm step heading -->
+          <h3 class="confirm-title">Confirm Your Booking</h3>
+          <p class="confirm-meta" id="confirm-meta">📅 Date · 🕐 Time · ⏱ 30 min</p>
+
+          <div class="form-group">
+            <label class="form-label" for="b-name">Full Name *</label>
+            <input class="form-input" type="text" id="b-name" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="b-email">Email Address *</label>
+            <input class="form-input" type="email" id="b-email" placeholder="your@email.com">
+          </div>
+
+          <div class="booking-error" id="booking-error"></div>
+
+          <button class="form-submit-btn" id="booking-confirm-btn" onclick="confirmBooking()">
+            🔒 Confirm Booking
+          </button>
+          <!-- 📝 EDIT: Note below the booking confirm button -->
+          <p class="confirm-note">Rate-limited for security · Meet link generated automatically</p>
+        </div>
+
+      </div><!-- end slot picker step -->
+
+      <!-- ── BOOKING SUCCESS STATE ──────────────────────────────── -->
+      <div class="booking-success" id="booking-success">
+        <div class="success-icon" style="margin:0 auto 22px;">✓</div>
+        <h2 class="success-title">You're Confirmed!</h2>
+        <!-- 📝 EDIT: Booking success description -->
+        <p class="success-desc" id="booking-success-msg">
+          Confirmation sent to your email. Your Google Meet link is ready.
+        </p>
+        <div class="booking-summary" id="booking-summary"></div>
+        <div class="booking-actions">
+          <!-- 📝 EDIT: Change WhatsApp number here too -->
+          <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-btn">💬 WhatsApp Us</a>
+          <button class="btn" onclick="resetBooking()">Book Another Session</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END BOOKING -->
+
+
+  <!-- ============================================================
+       TESTIMONIALS SECTION — Student Success Stories
+       ============================================================
+       📝 EDIT: Change the quote, author name, position, and
+       initials for each testimonial card.
+       To add a 4th card, copy any card block and add it to the grid.
+       ============================================================ -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:60px;">
+        <span class="section-label">Success Stories</span>
+        <h2 class="section-title center" style="margin-top:10px;">Students Who <span class="accent">Made It</span></h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <!-- 📝 EDIT: Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            Better Abroad made my dream of studying in the UK a reality. Their guidance was
+            invaluable throughout the entire process, from university selection to visa approval.
+            I couldn't have done it without them.
+          </p>
+          <div class="testimonial-author">
+            <!-- 📝 EDIT: Change background color + initials to match the person -->
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#660099,#9333ea);">PS</div>
+            <div>
+              <div class="testimonial-name">Zainabou Soulay</div>
+              <!-- 📝 EDIT: University and country -->
+              <div class="testimonial-pos">University of Manchester, UK</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 📝 EDIT: Testimonial 2 -->
+        <div class="testimonial-card" style="border-top-color:var(--crimson);">
+          <div class="testimonial-quote" style="color:rgba(210,16,52,0.3);">"</div>
+          <p class="testimonial-text">
+            I was skeptical at first, but the team's expertise and dedication exceeded all
+            expectations. They secured me a full scholarship to study in Canada — something
+            I never thought possible!
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#002A5C,#1e40af);">AP</div>
+            <div>
+              <div class="testimonial-name">EGONO SAMUEL</div>
+              <div class="testimonial-pos">University of Toronto, Canada</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 📝 EDIT: Testimonial 3 -->
+        <div class="testimonial-card" style="border-top-color:#0a6640;">
+          <div class="testimonial-quote" style="color:rgba(10,102,64,0.3);">"</div>
+          <p class="testimonial-text">
+            From application to landing in Switzerland, Better Abroad handled everything
+            perfectly. Their support made studying abroad completely stress-free and
+            truly exciting. I'm living my dream!
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#0a6640,#16a34a);">AG</div>
+            <div>
+              <div class="testimonial-name">Foko Bryan</div>
+              <div class="testimonial-pos">Alpine Swiss Business school, Geneva</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END TESTIMONIALS -->
+
+
+  <!-- ============================================================
+       FAQ SECTION — Accordion Questions & Answers
+       ============================================================
+       📝 EDIT: To change a FAQ:
+         - Edit the text in <span class="faq-q-text">
+         - Edit the <p> inside .faq-answer
+       To add a new FAQ, copy one entire .faq-item block and paste it.
+       ============================================================ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:56px;">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title center" style="margin-top:10px;">Common <span class="accent">Questions</span></h2>
+      </div>
+
+      <div class="faq-list">
+
+        <!-- 📝 EDIT: FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-q-text">How long does the visa process take?</span>
+            <span class="faq-arrow">⌄</span>
+          </button>
+          <div class="faq-answer">
+            <p>Visa processing time varies by country — typically 4 to 12 weeks — but we begin
+            preparations immediately after university acceptance. Our expert team ensures all
+            documentation is perfect, maximizing approval chances on the very first application.</p>
+          </div>
+        </div>
+
+        <!-- 📝 EDIT: FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Are your services completely free of charge?</span>
+            <span class="faq-arrow">⌄</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! Our basic counseling and guidance services are completely free. We earn
+            commissions from partner universities only after students are successfully placed.
+            Your education journey should never be burdened with upfront costs — that's our
+            core commitment to you.</p>
+          </div>
+        </div>
+
+        <!-- 📝 EDIT: FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-q-text">How much does it cost to study abroad?</span>
+            <span class="faq-arrow">⌄</span>
+          </button>
+          <div class="faq-answer">
+            <p>Costs vary significantly by destination, university, and program. Typically,
+            tuition ranges from $15,000–$60,000 per year, with living expenses adding another
+            $10,000–$25,000 annually. We actively help you find scholarships and financial aid
+            to reduce these costs significantly — often covering 50–100% of tuition fees.</p>
+          </div>
+        </div>
+
+        <!-- 📝 EDIT: FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-q-text">What are the eligibility requirements?</span>
+            <span class="faq-arrow">⌄</span>
+          </button>
+          <div class="faq-answer">
+            <p>Requirements vary by country and university, but generally include: completed
+            secondary or bachelor's education, English language proficiency (IELTS/TOEFL),
+            minimum academic grades, and a valid passport. We thoroughly assess your eligibility
+            during the initial free consultation and guide you on any gaps to address.</p>
+          </div>
+        </div>
+
+        <!-- 📝 EDIT: FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Can you guarantee visa approval?</span>
+            <span class="faq-arrow">⌄</span>
+          </button>
+          <div class="faq-answer">
+            <p>While no agency can legally guarantee visa approval — as the final decision
+            rests with government authorities — our 98% success rate speaks for itself.
+            We prepare comprehensive, complete applications with all required documentation,
+            significantly increasing your chances. Our expertise minimizes the risk of rejection.</p>
+          </div>
+        </div>
+
+        <!-- 📝 EDIT: FAQ 6 — add more FAQs by copying this block -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-q-text">How long does the entire process take from start to finish?</span>
+            <span class="faq-arrow">⌄</span>
+          </button>
+          <div class="faq-answer">
+            <p>The timeline depends on your destination and program intake dates, but typically
+            6 to 12 months from initial consultation to departure. This includes university
+            selection (1–2 months), application and offer (2–3 months), and visa processing
+            (1–3 months). We recommend starting at least 12 months before your desired intake.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END FAQ -->
+
+
+  <!-- ============================================================
+       CONTACT / ENQUIRY FORM SECTION
+       ============================================================
+       📝 EDIT:
+       - Change section heading and subtitle
+       - Add/remove form fields as needed
+       - The submit button triggers the success state (see JS)
+       ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-header">
+        <div class="contact-badge">Get In Touch</div>
+        <!-- 📝 EDIT: Contact section heading -->
+        <h2 class="contact-title">Start Your Journey <em style="color:#93c5fd;">Today</em></h2>
+        <!-- 📝 EDIT: Contact section subtext -->
+        <p class="contact-sub">Free consultation. No commitment. Just expert guidance to your dream university.</p>
+      </div>
+
+      <div class="contact-card">
+
+        <!-- Success state (hidden until form submitted) -->
+        <div class="contact-success" id="contact-success">
+          <div class="contact-success-icon">✅</div>
+          <!-- 📝 EDIT: Contact form success heading -->
+          <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:var(--text);margin-bottom:12px;">Enquiry Received!</h2>
+          <!-- 📝 EDIT: Contact form success message -->
+          <p style="color:var(--muted);font-size:16px;max-width:400px;margin:0 auto 24px;">
+            Thank you for reaching out! Our team will contact you within 24 hours
+            with a personalised guidance plan.
+            <p>Tchuekam!</p>
+          </p>
+          <a href="#" onclick="resetContact()" class="btn" style="background:var(--navy);">Send Another Enquiry</a>
+        </div>
+
+        <!-- The actual form -->
+        <div id="contact-form-wrap">
+          <div class="contact-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="c-name">Full Name *</label>
+              <input class="form-input" type="text" id="c-name" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-email">Email Address *</label>
+              <input class="form-input" type="email" id="c-email" placeholder="your@email.com">
+            </div>
+          </div>
+
+          <div class="contact-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="c-phone">Phone Number *</label>
+              <input class="form-input" type="tel" id="c-phone" placeholder="+1 555 123 4567">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-destination">Study Destination *</label>
+              <!-- 📝 EDIT: Add/remove destination options -->
+              <select class="form-input" id="c-destination">
+                <option value="">Select a destination</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>New Zealand</option>
+                <option>Singapore</option>
+                <option>Ireland</option>
+                <option>Germany</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="contact-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="c-course">Desired Course / Field *</label>
+              <input class="form-input" type="text" id="c-course" placeholder="e.g. Computer Science, Business">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-qual">Current Qualification *</label>
+              <!-- 📝 EDIT: Add/remove qualification options -->
+              <select class="form-input" id="c-qual">
+                <option value="">Select your qualification</option>
+                <option>High School</option>
+                <option>Diploma</option>
+                <option>Bachelor's Degree</option>
+                <option>Master's Degree</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:24px;">
+            <label class="form-label" for="c-message">Your Message</label>
+            <!-- 📝 EDIT: Textarea placeholder -->
+            <textarea class="form-input" id="c-message" rows="4"
+              placeholder="Tell us about your goals, timeline, and any specific requirements you have..."></textarea>
+          </div>
+
+          <!-- 📝 EDIT: Contact form submit button text -->
+          <button class="form-submit-btn" onclick="submitContact()"
+            onmouseover="this.style.background='var(--crimson)'"
+            onmouseout="this.style.background='var(--navy)'">
+            Send My Free Enquiry →
+          </button>
+          <p class="contact-privacy">🔒 Your data is 100% secure. We never sell or share your information.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END CONTACT -->
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================
+       📝 EDIT: CONTACT DETAILS — Change phone, email, address.
+       Also update the social media links with your actual URLs.
+       ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand column -->
+        <div>
+          <!-- 📝 EDIT: Footer logo text -->
+          <div class="footer-brand-name">Better<span>Abroad</span></div>
+          <!-- 📝 EDIT: Footer brand description -->
+          <p class="footer-brand-desc">
+            Your trusted partner in global education. Helping thousands of students
+            achieve their dreams every year — completely free of charge.
+          </p>
+          <!-- 📝 EDIT: Social media links — replace href with your actual URLs -->
+          <div class="footer-socials">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Navigation column -->
+        <div>
+          <div class="footer-col-title">Navigate</div>
+          <div class="footer-links">
+            <a href="#home"         class="footer-link">Home</a>
+            <a href="#services"     class="footer-link">Services</a>
+            <a href="#courses"      class="footer-link">Courses</a>
+            <a href="#booking"      class="footer-link">Book Free Call</a>
+            <a href="#faq"          class="footer-link">FAQ</a>
+            <a href="#contact"      class="footer-link">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Destinations column -->
+        <div>
+          <!-- 📝 EDIT: Destination links in footer -->
+          <div class="footer-col-title">Destinations</div>
+          <div class="footer-links">
+            <span class="footer-link">🇬🇧 United Kingdom</span>
+            <span class="footer-link">🇺🇸 United States</span>
+            <span class="footer-link">🇨🇦 Canada</span>
+            <span class="footer-link">🇦🇺 Australia</span>
+            <span class="footer-link">🇮🇪 Ireland</span>
+            <span class="footer-link">🇩🇪 Germany</span>
+          </div>
+        </div>
+
+        <!-- CONTACT DETAILS column -->
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-links">
+            <!-- 📝 EDIT: YOUR ACTUAL PHONE NUMBER -->
+            <span class="footer-link">📞 (+237) 69038-0798</span>
+            <!-- 📝 EDIT: YOUR ACTUAL EMAIL ADDRESS -->
+            <span class="footer-link">✉️ tchuekrostand@gmail.com</span>
+            <!-- 📝 EDIT: YOUR OFFICE ADDRESS -->
+            <span class="footer-link">📍 6011 carref Mballa, Yaounde</span>
+            <!-- 📝 EDIT: YOUR OFFICE HOURS -->
+            <span class="footer-link">🕐 Mon–Sat, 8am–7pm</span>
+          </div>
+        </div>
+
+      </div><!-- end footer-grid -->
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <!-- 📝 EDIT: Copyright year and company name -->
+        <p class="footer-copy">© 2026 BetterAbroad. All rights reserved.</p>
+        <div class="footer-legal">
+          <span>Privacy Policy</span>
+          <span>Terms of Service</span>
+          <span>Cookie Policy</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- ============================================================
+       JAVASCRIPT — All interactive logic
+       ============================================================
+       SECTIONS:
+       A. UNIVERSITY DATABASE    ← 📝 EDIT: Add/remove universities
+       B. AVAILABLE SLOTS        ← 📝 EDIT: Change time slots
+       C. BOOKED SLOTS           ← 📝 EDIT: Pre-mark unavailable slots
+       D. Hero Form Logic        (avoid editing unless confident)
+       E. Stats Count-Up         (avoid editing)
+       F. Marquee Setup          (avoid editing)
+       G. Course Finder Logic    (avoid editing)
+       H. Calendar Logic         (avoid editing)
+       I. Booking Logic          (avoid editing)
+       J. FAQ Toggle             (avoid editing)
+       K. Contact Form           (avoid editing)
+       L. Navigation Scroll Spy  (avoid editing)
+       ============================================================ -->
+  <script>
+
+  /* ============================================================
+     A. UNIVERSITY DATABASE
+     ============================================================
+     📝 EDIT: This is the data that powers the Course Finder.
+     To add a university, copy one object { ... } and add it to the array.
+     Fields:
+       id       — unique number (increment by 1 each time)
+       name     — full university name
+       country  — must match filter options exactly (e.g. "UK", "Canada")
+       city     — city name shown on the card
+       subject  — must match filter options exactly
+       intake   — must match filter options exactly (e.g. "September")
+       tuition  — display string (e.g. "£22,000" or "Free")
+       flag     — emoji flag 🇬🇧
+       color    — hex color for the card accent (brand color of the uni)
+       acronym  — 3-4 letter abbreviation for the logo placeholder
+     ============================================================ */
+  const UNIVERSITIES = [
+    { id:1,  name:"University of Manchester",     country:"UK",          city:"Manchester",    subject:"Business & Management",  intake:"September", tuition:"£22,000",    flag:"🇬🇧", color:"#660099", acronym:"UoM"  },
+    { id:2,  name:"University of Toronto",        country:"Canada",      city:"Toronto",       subject:"Engineering",            intake:"September", tuition:"CA$32,000",  flag:"🇨🇦", color:"#002A5C", acronym:"UofT" },
+    { id:3,  name:"University of Sydney",         country:"Australia",   city:"Sydney",        subject:"Medicine & Healthcare",  intake:"March",     tuition:"AU$42,000",  flag:"🇦🇺", color:"#003087", acronym:"USyd" },
+    { id:4,  name:"California ETEE College",      country:"USA",         city:"San Francisco", subject:"Information Technology", intake:"September", tuition:"$14,200",    flag:"🇺🇸", color:"#1a3a6b", acronym:"CEC"  },
+    { id:5,  name:"Alpine Swiss Business School", country:"Switzerland", city:"Geneva",        subject:"Finance & Economics",    intake:"February",  tuition:"CHF 22,500", flag:"🇨🇭", color:"#c8102e", acronym:"ASBS" },
+    { id:6,  name:"SEDA College",                 country:"Ireland",     city:"Dublin",        subject:"Arts & Humanities",      intake:"January",   tuition:"€9,800",     flag:"🇮🇪", color:"#169b62", acronym:"SEDA" },
+    { id:7,  name:"TU Berlin",                    country:"Germany",     city:"Berlin",        subject:"Engineering",            intake:"October",   tuition:"€1,500",     flag:"🇩🇪", color:"#d62828", acronym:"TUB"  },
+    { id:8,  name:"NUS Singapore",                country:"Singapore",   city:"Singapore",     subject:"Information Technology", intake:"August",    tuition:"SG$31,000",  flag:"🇸🇬", color:"#003d7c", acronym:"NUS"  },
+    { id:9,  name:"University of Auckland",       country:"New Zealand", city:"Auckland",      subject:"Business & Management",  intake:"February",  tuition:"NZ$28,000",  flag:"🇳🇿", color:"#003893", acronym:"UoA"  },
+    { id:10, name:"Sciences Po",                  country:"France",      city:"Paris",         subject:"Arts & Humanities",      intake:"September", tuition:"€14,000",    flag:"🇫🇷", color:"#0055a4", acronym:"ScPo" },
+    { id:11, name:"McGill University",            country:"Canada",      city:"Montréal",      subject:"Medicine & Healthcare",  intake:"September", tuition:"CA$22,000",  flag:"🇨🇦", color:"#ed1b2f", acronym:"McGi" },
+    { id:12, name:"Delft University of Tech",     country:"Netherlands", city:"Delft",         subject:"Engineering",            intake:"February",  tuition:"€18,750",    flag:"🇳🇱", color:"#003da5", acronym:"TUD"  },
+  ];
+
+  /* ============================================================
+     B. AVAILABLE TIME SLOTS
+     ============================================================
+     📝 EDIT: Add or remove time slots from this list.
+     Format: "HH:MM AM/PM"
+     ============================================================ */
+  const SLOTS = [
+    "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM",
+    "11:00 AM", "11:30 AM",
+    "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM"
+  ];
+
+  /* ============================================================
+     C. PRE-BOOKED SLOTS (simulates a real database)
+     ============================================================
+     📝 EDIT: To mark slots as already booked on a specific date,
+     add an entry like this:
+       "YYYY-MM-DD": [0, 1, 2]   ← slot INDEX numbers (0 = first slot)
+     If ALL slots are booked, the date is greyed out on the calendar.
+     ============================================================ */
+  const BOOKED_SLOTS = {
+    "2026-03-05": [1, 3, 5],
+    "2026-03-06": [0, 2, 6],
+    "2026-03-10": [0,1,2,3,4,5,6,7,8,9,10],  /* fully booked */
+    "2026-03-12": [4, 5, 9],
+  };
+
+
+  /* ============================================================
+     D. HERO FORM LOGIC
+     (Handles the 2-step eligibility form with confetti)
+     ============================================================ */
+  let heroStep = 1;
+
+  function heroNextStep() {
+    const name  = document.getElementById('h-name').value.trim();
+    const email = document.getElementById('h-email').value.trim();
+    const phone = document.getElementById('h-phone').value.trim();
+    let valid = true;
+
+    // Clear previous errors
+    ['err-name','err-email','err-phone'].forEach(id => document.getElementById(id).textContent = '');
+    ['h-name','h-email','h-phone'].forEach(id => document.getElementById(id).classList.remove('error'));
+
+    if (name.length < 2) {
+      document.getElementById('err-name').textContent = '⚠ Full name is required';
+      document.getElementById('h-name').classList.add('error');
+      valid = false;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('err-email').textContent = '⚠ Valid email address required';
+      document.getElementById('h-email').classList.add('error');
+      valid = false;
+    }
+    if (phone.length < 7) {
+      document.getElementById('err-phone').textContent = '⚠ Phone number is required';
+      document.getElementById('h-phone').classList.add('error');
+      valid = false;
+    }
+    if (!valid) return;
+
+    // Move to step 2 with animation
+    document.getElementById('form-step-1').style.opacity = '0';
+    document.getElementById('form-step-1').style.transform = 'translateX(-16px)';
+    setTimeout(() => {
+      document.getElementById('form-step-1').style.display = 'none';
+      document.getElementById('form-step-2').style.display = 'block';
+      document.getElementById('form-step-2').style.animation = 'fadeUp .25s ease';
+    }, 200);
+
+    // Update step dots
+    document.getElementById('step-dot-1').classList.remove('active');
+    document.getElementById('step-dot-1').classList.add('done');
+    document.getElementById('step-dot-1').textContent = '✓';
+    document.getElementById('step-line-1').classList.add('done');
+    document.getElementById('step-dot-2').classList.add('active');
+    document.getElementById('step-label-text').textContent = 'Study Preferences';
+    heroStep = 2;
+  }
+
+  function heroPrevStep() {
+    document.getElementById('form-step-2').style.display = 'none';
+    document.getElementById('form-step-1').style.display = 'block';
+    document.getElementById('form-step-1').style.opacity = '1';
+    document.getElementById('form-step-1').style.transform = 'none';
+    document.getElementById('step-dot-1').classList.add('active');
+    document.getElementById('step-dot-1').classList.remove('done');
+    document.getElementById('step-dot-1').textContent = '1';
+    document.getElementById('step-line-1').classList.remove('done');
+    document.getElementById('step-dot-2').classList.remove('active');
+    document.getElementById('step-label-text').textContent = 'Personal Details';
+    heroStep = 1;
+  }
+
+  function heroSubmit() {
+    const country = document.getElementById('h-country').value;
+    const level   = document.getElementById('h-level').value;
+    document.getElementById('err-country').textContent = '';
+    document.getElementById('err-level').textContent = '';
+
+    if (!country) { document.getElementById('err-country').textContent = '⚠ Please select a destination'; return; }
+    if (!level)   { document.getElementById('err-level').textContent   = '⚠ Please select your level'; return; }
+
+    // Show success state
+    document.getElementById('form-step-2').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+
+    // Fill in personalised text
+    const firstName = document.getElementById('h-name').value.trim().split(' ')[0];
+    document.getElementById('success-name').textContent    = firstName;
+    document.getElementById('success-country').textContent = country;
+    document.getElementById('success-email').textContent   = document.getElementById('h-email').value.trim();
+
+    // Launch confetti burst
+    launchConfetti();
+  }
+
+  function heroReset() {
+    document.getElementById('form-success').style.display = 'none';
+    document.getElementById('form-step-1').style.display  = 'block';
+    document.getElementById('form-step-1').style.opacity  = '1';
+    document.getElementById('form-step-1').style.transform = 'none';
+    ['h-name','h-email','h-phone','h-country','h-level'].forEach(id => document.getElementById(id).value = '');
+    heroPrevStep();
+  }
+
+  /* Confetti burst on the hero canvas */
+  function launchConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx    = canvas.getContext('2d');
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    const colors = ['#1e40af','#D21034','#FFD700','#00C896','#3b82f6'];
+    const particles = Array.from({length:120}, () => ({
+      x: canvas.width  * (0.2 + Math.random() * 0.6),
+      y: -10,
+      r: Math.random() * 7 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - .5) * 5, vy: Math.random() * 5 + 2,
+      rot: Math.random() * 360, rv: (Math.random() - .5) * 8,
+      shape: Math.random() > .5 ? 'r' : 'c'
+    }));
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.vy += .1; p.rot += p.rv;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color; ctx.globalAlpha = Math.max(0, 1 - frame / 130);
+        if (p.shape === 'r') ctx.fillRect(-p.r, -p.r/2, p.r*2, p.r);
+        else { ctx.beginPath(); ctx.arc(0, 0, p.r, 0, Math.PI*2); ctx.fill(); }
+        ctx.restore();
+      });
+      frame++;
+      if (frame < 150) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    requestAnimationFrame(draw);
+  }
+
+
+  /* ============================================================
+     E. STATS COUNT-UP (IntersectionObserver triggers animation)
+     ============================================================ */
+  const statsSection = document.getElementById('stats');
+  let statsAnimated  = false;
+
+  const statsObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !statsAnimated) {
+      statsAnimated = true;
+      document.querySelectorAll('.count-up').forEach(el => {
+        const target   = parseInt(el.dataset.target);
+        const duration = 2000 + Math.random() * 400;
+        let start = null;
+        function tick(ts) {
+          if (!start) start = ts;
+          const progress = Math.min((ts - start) / duration, 1);
+          const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+          el.textContent = Math.floor(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(tick);
+      });
+      statsObserver.disconnect();
+    }
+  }, { threshold: 0.25 });
+  statsObserver.observe(statsSection);
+
+
+  /* ============================================================
+     F. MARQUEE SETUP (duplicates the track for seamless loop)
+     ============================================================ */
+  (function setupMarquee() {
+    const track = document.getElementById('marquee-track');
+    // Clone the inner HTML to double the content for seamless looping
+    track.innerHTML += track.innerHTML;
+    // Calculate animation speed based on content width
+    const totalWidth = track.scrollWidth;
+    const duration   = totalWidth / 80; // 80px per second
+    track.style.animation = `marqueeScroll ${duration}s linear infinite`;
+  })();
+
+
+  /* ============================================================
+     G. COURSE FINDER LOGIC
+     (Search, filter, render cards, suggestions dropdown)
+     ============================================================ */
+  let activeFilters = { country: 'All Countries', subject: 'All Subjects', intake: 'All Intakes' };
+  let searchQuery   = '';
+  let debounceTimer = null;
+
+  /* Build the filter sidebar options from the data */
+  function buildFilterSidebar() {
+    const countries = ['All Countries', ...new Set(UNIVERSITIES.map(u => u.country))];
+    const subjects  = ['All Subjects',  ...new Set(UNIVERSITIES.map(u => u.subject))];
+    const intakes   = ['All Intakes',   ...new Set(UNIVERSITIES.map(u => u.intake))];
+
+    const groups = [
+      { label: 'Country',      options: countries, key: 'country' },
+      { label: 'Subject Area', options: subjects,  key: 'subject'  },
+      { label: 'Intake Month', options: intakes,   key: 'intake'   },
+    ];
+
+    document.getElementById('filter-groups').innerHTML = groups.map(g => `
+      <div class="filter-group">
+        <div class="filter-group-label">${g.label}</div>
+        <div class="filter-options" id="filter-${g.key}">
+          ${g.options.map(opt => `
+            <button class="filter-btn ${activeFilters[g.key] === opt ? 'active' : ''}"
+              onclick="setFilter('${g.key}', '${opt}')">${opt}</button>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function setFilter(key, value) {
+    activeFilters[key] = value;
+    updateFilterResetVisibility();
+    renderCourses(true); // show loading skeletons
+    buildFilterSidebar(); // re-render sidebar to update active states
+  }
+
+  function resetFilters() {
+    activeFilters = { country: 'All Countries', subject: 'All Subjects', intake: 'All Intakes' };
+    searchQuery   = '';
+    document.getElementById('uni-search').value = '';
+    document.getElementById('search-clear').style.display = 'none';
+    updateFilterResetVisibility();
+    renderCourses(true);
+    buildFilterSidebar();
+  }
+
+  function updateFilterResetVisibility() {
+    const hasActive = Object.values(activeFilters).some(v => !v.startsWith('All')) || searchQuery;
+    document.getElementById('filter-reset').style.display = hasActive ? 'block' : 'none';
+  }
+
+  /* Filter + search the university data */
+  function getFilteredUniversities() {
+    return UNIVERSITIES.filter(u => {
+      const matchSearch  = !searchQuery ||
+        [u.name, u.country, u.subject, u.city].some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchCountry = activeFilters.country === 'All Countries' || u.country === activeFilters.country;
+      const matchSubject = activeFilters.subject === 'All Subjects'  || u.subject === activeFilters.subject;
+      const matchIntake  = activeFilters.intake  === 'All Intakes'   || u.intake  === activeFilters.intake;
+      return matchSearch && matchCountry && matchSubject && matchIntake;
+    });
+  }
+
+  /* Render university cards (with optional skeleton loading) */
+  function renderCourses(withLoading = false) {
+    const grid = document.getElementById('uni-grid');
+
+    if (withLoading) {
+      // Show skeleton placeholders while "loading"
+      grid.innerHTML = Array.from({length:6}).map(() => `
+        <div class="skel-card">
+          <div class="skel-bar skeleton"></div>
+          <div class="skel-body">
+            <div style="display:flex;gap:14px;margin-bottom:16px;align-items:center;">
+              <div class="skeleton" style="width:48px;height:48px;border-radius:10px;flex-shrink:0;"></div>
+              <div style="flex:1;">
+                <div class="skel-row skeleton wide"></div>
+                <div class="skel-row skeleton short" style="margin-top:6px;"></div>
+              </div>
+            </div>
+            <div class="skel-row skeleton wide"></div>
+            <div class="skel-row skeleton short"></div>
+            <div style="display:flex;justify-content:space-between;margin-top:16px;">
+              <div class="skeleton" style="width:80px;height:26px;border-radius:20px;"></div>
+              <div class="skeleton" style="width:90px;height:34px;border-radius:8px;"></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      setTimeout(() => renderCardsForReal(), 650); // simulated API delay
+    } else {
+      renderCardsForReal();
+    }
+  }
+
+  function renderCardsForReal() {
+    const results = getFilteredUniversities();
+    const grid    = document.getElementById('uni-grid');
+
+    // Update count labels
+    document.getElementById('filter-count').textContent = results.length + ' found';
+    document.getElementById('results-count').innerHTML  =
+      `Showing <strong>${results.length}</strong> results${searchQuery ? ` for "<strong style="color:var(--navy)">${searchQuery}</strong>"` : ''}`;
+
+    if (results.length === 0) {
+      grid.innerHTML = `
+        <div class="no-results">
+          <div class="no-results-icon">🎓</div>
+          <h3 style="color:#475569;margin-bottom:8px;font-family:'Playfair Display',serif;">No institutions found</h3>
+          <p>Try adjusting your search term or filters</p>
+          <button class="btn" style="margin-top:16px;font-size:14px;padding:12px 22px;" onclick="resetFilters()">Clear Everything</button>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = results.map((u, i) => `
+      <div class="uni-card" style="animation-delay:${i*60}ms;"
+        onmouseenter="this.style.borderColor='${u.color}55';this.querySelector('.apply-btn').style.background='${u.color}';this.querySelector('.apply-btn').style.color='white';this.querySelector('.apply-btn').style.borderColor='${u.color}';"
+        onmouseleave="this.style.borderColor='var(--border)';this.querySelector('.apply-btn').style.background='#f8fafc';this.querySelector('.apply-btn').style.color='var(--muted)';this.querySelector('.apply-btn').style.borderColor='var(--border)';">
+        <div class="uni-card-bar" style="background:linear-gradient(90deg,${u.color},${u.color}80);"></div>
+        <div class="uni-card-body">
+          <div class="uni-card-head">
+            <div class="uni-logo" style="background:linear-gradient(135deg,${u.color},${u.color}cc);box-shadow:0 4px 12px ${u.color}40;">${u.acronym}</div>
+            <div>
+              <div class="uni-name">${u.name}</div>
+              <div class="uni-location">${u.flag} ${u.city}, ${u.country}</div>
+            </div>
+          </div>
+          <div class="uni-tags">
+            <span class="pill" style="background:${u.color}15;color:${u.color};">${u.subject}</span>
+            <span class="pill" style="background:#f1f5f9;color:#475569;">🗓 ${u.intake}</span>
+          </div>
+          <div class="uni-footer">
+            <div>
+              <div class="tuition-label">Annual Tuition</div>
+              <div class="tuition-value">${u.tuition}</div>
+            </div>
+            <button class="apply-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Apply Free →</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  /* Autocomplete suggestions dropdown */
+  const searchInput  = document.getElementById('uni-search');
+  const suggestionsEl = document.getElementById('suggestions');
+
+  searchInput.addEventListener('input', function() {
+    const val = this.value.trim();
+    searchQuery = val;
+
+    // Show/hide clear button
+    document.getElementById('search-clear').style.display = val ? 'flex' : 'none';
+
+    // Debounce the search (wait 300ms after last keystroke)
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      updateFilterResetVisibility();
+      renderCourses(true);
+    }, 300);
+
+    // Suggestions dropdown
+    if (val.length < 2) { suggestionsEl.style.display = 'none'; return; }
+    const matches = UNIVERSITIES.filter(u =>
+      u.name.toLowerCase().includes(val.toLowerCase()) ||
+      u.country.toLowerCase().includes(val.toLowerCase())
+    ).slice(0, 5);
+
+    if (matches.length === 0) { suggestionsEl.style.display = 'none'; return; }
+    suggestionsEl.innerHTML = matches.map(u => `
+      <div class="suggestion-item" onclick="selectSuggestion('${u.name.replace(/'/g,"\\'")}')">
+        <div class="sugg-logo" style="background:linear-gradient(135deg,${u.color},${u.color}aa);">${u.acronym}</div>
+        <div>
+          <div class="sugg-name">${u.name}</div>
+          <div class="sugg-meta">${u.flag} ${u.city} · ${u.subject}</div>
+        </div>
+        <div class="sugg-tuition">${u.tuition}</div>
+      </div>
+    `).join('');
+    suggestionsEl.style.display = 'block';
+  });
+
+  function selectSuggestion(name) {
+    searchInput.value = name;
+    searchQuery = name;
+    suggestionsEl.style.display = 'none';
+    document.getElementById('search-clear').style.display = 'flex';
+    updateFilterResetVisibility();
+    renderCourses(true);
+  }
+
+  function clearSearch() {
+    searchInput.value = '';
+    searchQuery = '';
+    suggestionsEl.style.display = 'none';
+    document.getElementById('search-clear').style.display = 'none';
+    updateFilterResetVisibility();
+    renderCourses(true);
+  }
+
+  // Close suggestions when clicking outside
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.search-wrap')) suggestionsEl.style.display = 'none';
+  });
+
+  // Initial render
+  buildFilterSidebar();
+  renderCourses(true);
+
+
+  /* ============================================================
+     H. CALENDAR LOGIC
+     ============================================================ */
+  const TODAY    = new Date();
+  let calYear    = TODAY.getFullYear();
+  let calMonth   = TODAY.getMonth();
+  let selectedDate = null;
+  let selectedSlot = null;
+
+  const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DAY_NAMES   = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+  function renderCalendar() {
+    document.getElementById('cal-month-label').textContent = MONTH_NAMES[calMonth] + ' ' + calYear;
+
+    // Day name headers
+    document.getElementById('cal-day-names').innerHTML = DAY_NAMES.map(d =>
+      `<div class="cal-day-name">${d}</div>`
+    ).join('');
+
+    // Calculate days in the month
+    const firstDay  = new Date(calYear, calMonth, 1).getDay();
+    const totalDays = new Date(calYear, calMonth + 1, 0).getDate();
+    let html = '';
+
+    // Empty cells before first day
+    for (let i = 0; i < firstDay; i++) html += '<div></div>';
+
+    // Day buttons
+    for (let day = 1; day <= totalDays; day++) {
+      const dateStr   = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const dateObj   = new Date(calYear, calMonth, day);
+      const isPast    = dateObj < new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate());
+      const isWeekend = dateObj.getDay() === 0 || dateObj.getDay() === 6;
+      const bookedLen = (BOOKED_SLOTS[dateStr] || []).length;
+      const isFullyBooked = bookedLen >= SLOTS.length;
+      const disabled  = isPast || isWeekend || isFullyBooked;
+      const isSelected = dateStr === selectedDate;
+      const isToday   = day === TODAY.getDate() && calMonth === TODAY.getMonth() && calYear === TODAY.getFullYear();
+      const hasDot    = !disabled && bookedLen > 0;
+
+      html += `
+        <button class="cal-day ${isSelected ? 'selected' : ''} ${isToday && !isSelected ? 'today' : ''}"
+          ${disabled ? 'disabled' : ''}
+          onclick="selectDate('${dateStr}', ${day})">
+          ${day}
+          ${hasDot ? '<div class="dot"></div>' : ''}
+        </button>`;
+    }
+    document.getElementById('cal-days').innerHTML = html;
+  }
+
+  function calNav(dir) {
+    calMonth += dir;
+    if (calMonth < 0)  { calMonth = 11; calYear--; }
+    if (calMonth > 11) { calMonth = 0;  calYear++; }
+    renderCalendar();
+  }
+
+  function selectDate(dateStr, day) {
+    selectedDate = dateStr;
+    selectedSlot = null;
+    renderCalendar();
+    // Update the info panel
+    const d = new Date(calYear, calMonth, day);
+    const label = `${['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()]}, ${MONTH_NAMES[calMonth]} ${day}`;
+    document.getElementById('date-panel-title').textContent = 'Selected: ' + label;
+    document.getElementById('view-slots-btn').disabled = false;
+    document.getElementById('view-slots-btn').style.background = 'var(--navy)';
+    document.getElementById('view-slots-btn').style.color      = 'white';
+    document.getElementById('view-slots-btn').style.boxShadow  = '0 6px 20px rgba(30,64,175,0.4)';
+    document.getElementById('view-slots-btn').style.cursor     = 'pointer';
+  }
+
+  // Init calendar
+  renderCalendar();
+
+
+  /* ============================================================
+     I. BOOKING LOGIC (slot picker + confirm + success)
+     ============================================================ */
+  function showSlots() {
+    if (!selectedDate) return;
+    document.getElementById('booking-step-calendar').style.display = 'none';
+    document.getElementById('booking-step-slots').style.display    = 'grid';
+
+    // Update step indicator
+    document.getElementById('b-step-1').classList.remove('active');
+    document.getElementById('b-step-1').classList.add('done');
+    document.getElementById('b-step-1').textContent = '✓';
+    document.getElementById('b-line-1').classList.add('done');
+    document.getElementById('b-step-2').classList.add('active');
+    document.getElementById('b-step-label').textContent = 'Choose a Time';
+
+    renderSlots();
+  }
+
+  function showCalendar() {
+    document.getElementById('booking-step-slots').style.display    = 'none';
+    document.getElementById('booking-step-calendar').style.display = 'grid';
+    document.getElementById('confirm-panel').style.display         = 'none';
+    // Reset step indicator
+    document.getElementById('b-step-1').classList.add('active');
+    document.getElementById('b-step-1').classList.remove('done');
+    document.getElementById('b-step-1').textContent = '1';
+    document.getElementById('b-line-1').classList.remove('done');
+    document.getElementById('b-step-2').classList.remove('active');
+    document.getElementById('b-step-label').textContent = 'Pick a Date';
+    selectedSlot = null;
+  }
+
+  function renderSlots() {
+    const [y,m,d] = selectedDate.split('-');
+    const dateObj = new Date(parseInt(y), parseInt(m)-1, parseInt(d));
+    const label   = `${MONTH_NAMES[parseInt(m)-1]} ${parseInt(d)}, ${y}`;
+    const bookedIndices = BOOKED_SLOTS[selectedDate] || [];
+    const availCount    = SLOTS.length - bookedIndices.length;
+
+    document.getElementById('slots-date-label').textContent  = label;
+    document.getElementById('slots-avail-count').textContent = availCount + ' slots available · 30 min each';
+
+    document.getElementById('slots-grid').innerHTML = SLOTS.map((slot, i) => {
+      const booked   = bookedIndices.includes(i);
+      const selected = slot === selectedSlot;
+      return `
+        <button class="slot-btn ${selected ? 'selected' : ''}"
+          ${booked ? 'disabled' : ''}
+          onclick="selectSlot('${slot}')">
+          ${slot}${booked ? ' ✗' : ''}
+        </button>`;
+    }).join('');
+
+    updateConfirmBtn();
+  }
+
+  function selectSlot(slot) {
+    selectedSlot = slot;
+    renderSlots();
+    updateConfirmBtn();
+  }
+
+  function updateConfirmBtn() {
+    const btn = document.getElementById('slots-confirm-btn');
+    btn.disabled   = !selectedSlot;
+    btn.textContent = selectedSlot ? `Confirm · ${selectedSlot} →` : 'Select a slot →';
+  }
+
+  function showConfirm() {
+    if (!selectedSlot) return;
+    document.getElementById('confirm-panel').style.display = 'block';
+    document.getElementById('confirm-panel').style.animation = 'fadeUp .3s ease';
+    const [y,m,d] = selectedDate.split('-');
+    document.getElementById('confirm-meta').textContent =
+      `📅 ${MONTH_NAMES[parseInt(m)-1]} ${parseInt(d)}, ${y}   ·   🕐 ${selectedSlot}   ·   ⏱ 30 min`;
+    // Update step indicator
+    document.getElementById('b-step-2').classList.remove('active');
+    document.getElementById('b-step-2').classList.add('done');
+    document.getElementById('b-step-2').textContent = '✓';
+    document.getElementById('b-line-2').classList.add('done');
+    document.getElementById('b-step-3').classList.add('active');
+    document.getElementById('b-step-label').textContent = 'Confirm';
+  }
+
+  // Simple rate limiter (max 3 bookings per hour)
+  let bookingAttempts = 0;
+
+  function confirmBooking() {
+    const name  = document.getElementById('b-name').value.trim();
+    const email = document.getElementById('b-email').value.trim();
+    const errEl = document.getElementById('booking-error');
+
+    errEl.style.display = 'none';
+
+    if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = 'Please enter a valid name and email address.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    if (bookingAttempts >= 3) {
+      errEl.textContent = '⚠️ Too many attempts. Please wait a moment before trying again.';
+      errEl.style.display = 'block';
+      return;
+    }
+    bookingAttempts++;
+
+    // Simulate booking confirmation (700ms "server" delay)
+    const btn = document.getElementById('booking-confirm-btn');
+    btn.textContent = '⏳ Booking your slot...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      // Mark slot as booked (prevent double-booking)
+      const slotIndex = SLOTS.indexOf(selectedSlot);
+      if (!BOOKED_SLOTS[selectedDate]) BOOKED_SLOTS[selectedDate] = [];
+      BOOKED_SLOTS[selectedDate].push(slotIndex);
+
+      // Generate Google Meet link
+      const seg = n => Array.from({length:n}, () => 'abcdefghijklmnopqrstuvwxyz'[Math.floor(Math.random()*26)]).join('');
+      const meetLink   = `https://meet.google.com/${seg(3)}-${seg(4)}-${seg(3)}`;
+      const bookingId  = 'BA-' + Math.random().toString(36).substr(2,8).toUpperCase();
+      const [y,m,d]    = selectedDate.split('-');
+      const dateLabel  = `${MONTH_NAMES[parseInt(m)-1]} ${parseInt(d)}, ${y}`;
+
+      // Show success
+      document.getElementById('booking-step-slots').style.display  = 'none';
+      document.getElementById('booking-steps').style.display       = 'none';
+      document.getElementById('booking-success').style.display     = 'block';
+      document.getElementById('booking-success-msg').innerHTML     =
+        `Confirmation sent to <strong>${email}</strong>. Your Google Meet link is ready below.`;
+
+      // Build summary table
+      document.getElementById('booking-summary').innerHTML = [
+        ['📋 Booking ID', bookingId],
+        ['📅 Date', dateLabel],
+        ['🕐 Time', selectedSlot + ' (30 min)'],
+        ['👤 Name', name],
+        ['🎥 Meeting Link', `<a href="${meetLink}" target="_blank" style="color:var(--navy);">Join Google Meet →</a>`],
+      ].map(([key, val]) => `
+        <div class="booking-row">
+          <span class="booking-row-key">${key}</span>
+          <span class="booking-row-val">${val}</span>
+        </div>`
+      ).join('');
+    }, 700);
+  }
+
+  function resetBooking() {
+    // Reset all booking state
+    selectedDate = null;
+    selectedSlot = null;
+    document.getElementById('booking-success').style.display      = 'none';
+    document.getElementById('booking-steps').style.display        = 'flex';
+    document.getElementById('booking-step-calendar').style.display = 'grid';
+    document.getElementById('booking-step-slots').style.display   = 'none';
+    document.getElementById('confirm-panel').style.display        = 'none';
+    document.getElementById('b-name').value  = '';
+    document.getElementById('b-email').value = '';
+    document.getElementById('date-panel-title').textContent = 'Select a date to begin';
+    document.getElementById('view-slots-btn').disabled = true;
+    // Reset step dots
+    ['b-step-1','b-step-2','b-step-3'].forEach((id,i) => {
+      document.getElementById(id).className = 'step-dot';
+      document.getElementById(id).textContent = i+1;
+    });
+    document.getElementById('b-line-1').classList.remove('done');
+    document.getElementById('b-line-2').classList.remove('done');
+    document.getElementById('b-step-1').classList.add('active');
+    document.getElementById('b-step-label').textContent = 'Pick a Date';
+    renderCalendar();
+  }
+
+
+  /* ============================================================
+     J. FAQ ACCORDION TOGGLE
+     ============================================================ */
+  function toggleFaq(btn) {
+    const item     = btn.parentElement;
+    const isOpen   = item.classList.contains('open');
+    // Close all open FAQs
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    // Open the clicked one if it wasn't already open
+    if (!isOpen) item.classList.add('open');
+  }
+
+
+  /* ============================================================
+     K. CONTACT FORM SUBMISSION
+     ============================================================ */
+  function submitContact() {
+    const name = document.getElementById('c-name').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const phone = document.getElementById('c-phone').value.trim();
+
+    if (!name || !email || !phone) {
+      alert('Please fill in your name, email, and phone number.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    // Show success state
+    document.getElementById('contact-form-wrap').style.display = 'none';
+    document.getElementById('contact-success').style.display   = 'block';
+  }
+
+  function resetContact() {
+    document.getElementById('contact-form-wrap').style.display = 'block';
+    document.getElementById('contact-success').style.display   = 'none';
+    ['c-name','c-email','c-phone','c-course','c-message'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('c-destination').value  = '';
+    document.getElementById('c-qual').value         = '';
+  }
+
+
+  /* ============================================================
+     L. SMOOTH SCROLL & ACTIVE NAV HIGHLIGHT
+     ============================================================ */
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Highlight active nav link based on scroll position
+  const navSections = ['home','services','courses','booking','faq','contact'];
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+
+  navSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) navObserver.observe(el);
+  });
+
+  </script>
+
+</body>
+</html>
